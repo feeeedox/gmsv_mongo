@@ -7,7 +7,7 @@ struct GitHubTag {
 }
 
 pub(crate) fn check_latest_version() -> Result<(), Box<dyn std::error::Error>> {
-    let repo_owner = "Fedox-die-Ente";
+    let repo_owner = "feeeedox";
     let repo_name = "gmsv_mongo";
     let url = format!("https://api.github.com/repos/{}/{}/tags", repo_owner, repo_name);
 
