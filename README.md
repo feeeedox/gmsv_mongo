@@ -1,9 +1,9 @@
 <h1 align="center" id="title">gmsv_mongo</h1>
 
-<p align="center"><img src="https://socialify.git.ci/Fedox-die-Ente/gmsv_mongo/image?font=Jost&issues=1&language=1&name=1&owner=1&pattern=Floating%20Cogs&pulls=1&stargazers=1&theme=Dark" alt="project-image"></p>
+<p align="center"><img src="https://socialify.git.ci/feeeedox/gmsv_mongo/image?font=Jost&issues=1&language=1&name=1&owner=1&pattern=Floating%20Cogs&pulls=1&stargazers=1&theme=Dark" alt="project-image"></p>
 <p id="description">The gmsv_mongo module enables the usage of MongoDB connections within Garry's Mod (GMod) via Rust. This opens up diverse possibilities for database interactions and management within GMod servers.</p>
 
-<p align="center"><img src="https://img.shields.io/badge/License-MIT-green" alt="shields">   <img src="https://img.shields.io/github/release/Fedox-die-Ente/gmsv_mongo?include_prereleases=&amp;sort=semver&amp;color=green" alt="shields"></p>
+<p align="center"><img src="https://img.shields.io/badge/License-MIT-green" alt="shields">   <img src="https://img.shields.io/github/release/feeeedox/gmsv_mongo?include_prereleases=&amp;sort=semver&amp;color=green" alt="shields"></p>
 
 <h2>🛠️ Installation Steps:</h2>
 
@@ -72,11 +72,11 @@ require("mongo")
 
 <h2>🧑‍💻 Examples</h2>
 
-For some examples on how to use the module, check out the [examples](https://github.com/Fedox-die-Ente/gmsv_mongo/tree/master/examples) folder. 
+For some examples on how to use the module, check out the [examples](https://github.com/feeeedox/gmsv_mongo/tree/master/examples) folder. 
 
 <h2>🛡️ License:</h2>
 
-This project is licensed under the [AGPL-3.0](LICENSE)
+This project is licensed under the [MIT](LICENSE)
 
 <h2>💖Like my work?</h2>
 

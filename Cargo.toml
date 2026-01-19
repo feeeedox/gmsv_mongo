@@ -1,7 +1,11 @@
 [package]
 name = "gmsv_mongo"
-version = "1.6.4"
+version = "2.0.0"
 edition = "2021"
+authors = ["feeeedox"]
+description = "MongoDB driver for Garry's Mod with advanced features"
+license = "AGPL-3.0"
+repository = "https://github.com/feeeedox/gmsv_mongo"
 
 [lib]
 crate-type = ["cdylib"]
@@ -9,15 +13,40 @@ crate-type = ["cdylib"]
 [profile.dev]
 opt-level = 1
 
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+strip = true
+
+[features]
+default = ["full"]
+full = ["transactions", "gridfs", "change-streams"]
+transactions = []
+gridfs = []
+change-streams = []
+
 [dependencies]
 rglua = { version = "2.1.0" }
-termcolor = "1.4.1"
-dotenv = "0.15.0"
 futures = "0.3.30"
-tokio = { version = "1.32.0", features = ["full"] }
+tokio = { version = "1.40.0", features = ["full"] }
+serde = { version = "1.0.215", features = ["derive"] }
+serde_json = "1.0.133"
+thiserror = "1.0.69"
+chrono = "0.4.38"
+log = "0.4.22"
+env_logger = "0.11.5"
+once_cell = "1.20.2"
+hex = "0.4.3"
 lazy_static = "1.4.0"
-serde = { version = "1.0.188", features = ["derive"] }
 ureq = { version = "2.5.0", features = ["json"] }
+dotenv = "0.15.0"
+termcolor = "1.4.1"
 
 [dependencies.mongodb]
-version = "3.0.0"
+version = "3.1.0"
+features = ["rustls-tls"]
+
+[dev-dependencies]
+criterion = "0.5.1"
+mockall = "0.13.1"

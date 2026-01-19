@@ -1,5 +1,5 @@
+use log::{error, info, warn};
 use serde::Deserialize;
-use crate::logger::{log, LogLevel};
 
 #[derive(Deserialize)]
 struct GitHubTag {
@@ -21,18 +21,18 @@ pub(crate) fn check_latest_version() -> Result<(), Box<dyn std::error::Error>> {
         if let Some(latest_tag) = tags.first() {
             let current_version = env!("CARGO_PKG_VERSION");
 
-            log(LogLevel::Info, "Checking for updates...");
+            info!("Checking for updates...");
 
             if latest_tag.name != current_version {
-                log(LogLevel::Warning, &format!("A new version is available: {}", latest_tag.name));
+                warn!("You are using version {}, but the latest version is {}.", current_version, latest_tag.name);
             } else {
-                log(LogLevel::Info, "You are using the latest version.");
+                info!("You are using the latest version ({}).", current_version);
             }
         } else {
-            log(LogLevel::Error, "Failed to check for updates.");
+            error!("Failed to get the latest tag.");
         }
     } else {
-        log(LogLevel::Error, "Failed to send request.");
+        error!("Failed to fetch tags from GitHub.");
     }
 
     Ok(())
