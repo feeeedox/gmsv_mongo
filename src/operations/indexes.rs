@@ -1,7 +1,6 @@
-/// Index management operations
-use mongodb::{Collection, bson::Document, IndexModel};
 use crate::core::runtime::block_on;
 use crate::error::{MongoError, MongoResult};
+use mongodb::{bson::Document, Collection, IndexModel};
 
 pub fn create_index(collection: &Collection<Document>, keys: Document, unique: bool, name: Option<String>) -> MongoResult<String> {
     let collection = collection.clone();
@@ -105,7 +104,6 @@ pub fn create_text_index(collection: &Collection<Document>, fields: Vec<String>,
 
 #[cfg(test)]
 mod tests {
-    use super::*;
     use mongodb::bson::doc;
 
     #[test]

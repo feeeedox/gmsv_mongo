@@ -1,7 +1,6 @@
-/// Aggregation pipeline operations
-use mongodb::{Collection, bson::Document};
 use crate::core::runtime::block_on;
 use crate::error::{MongoError, MongoResult};
+use mongodb::{bson::Document, Collection};
 
 pub fn aggregate(collection: &Collection<Document>, pipeline: Vec<Document>) -> MongoResult<Vec<Document>> {
     let collection = collection.clone();
@@ -69,7 +68,6 @@ pub fn group_by(collection: &Collection<Document>, group_field: &str, accumulato
 
 #[cfg(test)]
 mod tests {
-    use super::*;
     use mongodb::bson::doc;
 
     #[test]

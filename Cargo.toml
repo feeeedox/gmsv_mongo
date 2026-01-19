@@ -1,10 +1,10 @@
 [package]
 name = "gmsv_mongo"
-version = "2.0.0"
+version = "2.1.0"
 edition = "2021"
 authors = ["feeeedox"]
 description = "MongoDB driver for Garry's Mod with advanced features"
-license = "AGPL-3.0"
+license = "MIT"
 repository = "https://github.com/feeeedox/gmsv_mongo"
 
 [lib]
