@@ -10,6 +10,11 @@ export default defineNuxtConfig({
         '@nuxtjs/mcp-toolkit'
     ],
 
+    app: {
+        baseURL: '/gmsv_mongo/',
+        cdnURL: '/gmsv_mongo/'
+    },
+
     devtools: {
         enabled: true
     },
