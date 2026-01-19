@@ -1,7 +1,6 @@
-/// Database and collection management operations
-use mongodb::{Database, bson::Document};
 use crate::core::runtime::block_on;
 use crate::error::{MongoError, MongoResult};
+use mongodb::{bson::Document, Database};
 
 pub fn create_collection(database: &Database, name: &str) -> MongoResult<()> {
     let database = database.clone();
@@ -96,8 +95,6 @@ pub fn drop_database(database: &Database) -> MongoResult<()> {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-
     #[test]
     fn test_collection_name_validation() {
         let name = "test_collection";

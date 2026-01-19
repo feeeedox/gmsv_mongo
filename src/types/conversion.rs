@@ -1,11 +1,8 @@
-/// Type conversion between Lua and BSON
-///
-/// Handles safe conversion between Lua tables and MongoDB BSON documents
-use std::ffi::{CStr, CString};
-use mongodb::bson::{Bson, Document, oid::ObjectId, DateTime};
+use crate::error::{LuaError, LuaResult};
+use mongodb::bson::{oid::ObjectId, Bson, DateTime, Document};
 use rglua::lua::LuaState;
 use rglua::prelude::*;
-use crate::error::{LuaError, LuaResult};
+use std::ffi::{CStr, CString};
 
 
 // Lua type constants
@@ -307,7 +304,6 @@ unsafe fn bson_value_to_lua(l: LuaState, value: &Bson) {
     }
 }
 
-/// Helper to get typename safely
 unsafe fn lua_typename(_l: LuaState, tp: i32) -> Option<&'static str> {
     match tp {
         LUA_TNIL => Some("nil"),

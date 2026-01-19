@@ -72,8 +72,7 @@ require("mongo")
 
 <h2>🧑‍💻 Examples</h2>
 
-For some examples on how to use the module, check out the [examples](https://github.com/feeeedox/gmsv_mongo/tree/master/examples) folder. 
-
+For some examples on how to use the module, check out the [examples](https://github.com/feeeedox/gmsv_mongo/tree/master/examples) folder or the [wiki](https://feeeedox.github.io/gmsv_mongo/)
 <h2>🛡️ License:</h2>
 
 This project is licensed under the [MIT](LICENSE)
