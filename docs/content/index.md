@@ -170,7 +170,7 @@ Key Features
 color: neutral
 size: lg
 target: _blank
-to: /crud-operations/overview
+to: /crud-operations
 trailingIcon: i-lucide-arrow-right
 variant: subtle
 ---
