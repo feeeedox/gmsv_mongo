@@ -85,7 +85,6 @@ Why Choose gmsv_mongo?
 ---
 color: neutral
 size: lg
-target: _blank
 to: /getting-started/installation
 trailingIcon: i-lucide-arrow-right
 variant: subtle
@@ -254,14 +253,11 @@ links:
       to: '/getting-started'
       trailingIcon: i-lucide-arrow-right
     - label: View Examples
-      to: '/examples/overview'
+      to: '/examples'
       trailingIcon: i-lucide-code
     - label: API Reference
-      to: '/utilities/api-reference'
+      to: '/api-reference'
       trailingIcon: i-lucide-book-open
-    - label: Migration Guide
-      to: '/utilities/migration'
-      trailingIcon: i-lucide-git-branch
     title: Ready to enhance your Garry's Mod server?
     description: Join other server owners using gmsv_mongo for reliable, high-performance database operations. Get started with comprehensive documentation and examples.
     class: dark:bg-neutral-950
