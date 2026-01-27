@@ -1,11 +1,12 @@
+use crate::log_info;
+use crate::operations;
+use crate::types::{bson_to_lua_table, lua_table_to_bson};
+use crate::utils::{check_string, opt_boolean, push_error, read_userdata, write_userdata};
+use log::error;
+use mongodb::bson::Document;
+use mongodb::{Collection, Database};
 use rglua::lua::LuaState;
 use rglua::prelude::*;
-use mongodb::{Database, Collection};
-use mongodb::bson::Document;
-use crate::utils::{write_userdata, read_userdata, check_string, opt_boolean, push_error};
-use crate::types::{lua_table_to_bson, bson_to_lua_table};
-use crate::operations;
-use log::{info, error};
 
 #[lua_function]
 pub extern "C" fn get_collection(l: LuaState) -> i32 {
@@ -502,7 +503,7 @@ pub unsafe fn drop_index(l: LuaState) -> i32 {
 
     match operations::drop_index(&collection, &index_name) {
         Ok(_) => {
-            info!("Dropped index: {}", index_name);
+            log_info!("Dropped index: {}", index_name);
             lua_pushboolean(l, 1);
         }
         Err(e) => {
@@ -516,8 +517,6 @@ pub unsafe fn drop_index(l: LuaState) -> i32 {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-
     #[test]
     fn test_module_exists() {
         assert!(true);

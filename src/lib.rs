@@ -16,7 +16,22 @@ mod updatecheck;
 
 use std::sync::atomic::{AtomicBool, Ordering};
 
-static SUPPRESS_MESSAGES: AtomicBool = AtomicBool::new(false);
+pub static SUPPRESS_MESSAGES: AtomicBool = AtomicBool::new(false);
+
+/// Returns whether messages should be suppressed
+pub fn is_suppressed() -> bool {
+    SUPPRESS_MESSAGES.load(Ordering::Relaxed)
+}
+
+/// Macro for conditional info logging that respects SUPPRESS_MESSAGES
+#[macro_export]
+macro_rules! log_info {
+    ($($arg:tt)*) => {
+        if !$crate::is_suppressed() {
+            log::info!($($arg)*);
+        }
+    };
+}
 
 fn init_logging() {
     env_logger::Builder::new()

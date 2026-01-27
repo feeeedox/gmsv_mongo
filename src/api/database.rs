@@ -1,9 +1,10 @@
+use crate::log_info;
+use crate::operations;
+use crate::utils::{check_string, push_error, read_userdata, write_userdata};
+use log::error;
+use mongodb::{Client, Database};
 use rglua::lua::LuaState;
 use rglua::prelude::*;
-use mongodb::{Client, Database};
-use crate::utils::{write_userdata, read_userdata, check_string, push_error};
-use crate::operations;
-use log::{info, error};
 
 #[lua_function]
 pub extern "C" fn get_database(l: LuaState) -> i32 {
@@ -72,7 +73,7 @@ pub extern "C" fn create_collection(l: LuaState) -> i32 {
 
         match operations::create_collection(&database, &collection_name) {
             Ok(_) => {
-                info!("Created collection: {}", collection_name);
+                log_info!("Created collection: {}", collection_name);
                 lua_pushboolean(l, 1);
             }
             Err(e) => {
@@ -100,7 +101,7 @@ pub extern "C" fn drop_collection(l: LuaState) -> i32 {
 
         match operations::drop_collection(&database, &collection_name) {
             Ok(_) => {
-                info!("Dropped collection: {}", collection_name);
+                log_info!("Dropped collection: {}", collection_name);
                 lua_pushboolean(l, 1);
             }
             Err(e) => {
@@ -150,7 +151,7 @@ pub extern "C" fn drop_database(l: LuaState) -> i32 {
 
         match operations::drop_database(&database) {
             Ok(_) => {
-                info!("Dropped database: {}", database.name());
+                log_info!("Dropped database: {}", database.name());
                 lua_pushboolean(l, 1);
             }
             Err(e) => {
@@ -165,8 +166,6 @@ pub extern "C" fn drop_database(l: LuaState) -> i32 {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-
     #[test]
     fn test_module_exists() {
         assert!(true);

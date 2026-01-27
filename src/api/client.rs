@@ -1,10 +1,11 @@
-use rglua::lua::LuaState;
-use rglua::prelude::*;
-use mongodb::Client;
 use crate::config::ConnectionConfig;
 use crate::core::connection::MongoConnection;
-use crate::utils::{write_userdata, check_string, push_error};
-use log::{info, error};
+use crate::log_info;
+use crate::utils::{check_string, push_error, write_userdata};
+use log::error;
+use mongodb::Client;
+use rglua::lua::LuaState;
+use rglua::prelude::*;
 
 #[lua_function]
 pub extern "C" fn new_client(l: LuaState) -> i32 {
@@ -38,7 +39,7 @@ pub extern "C" fn new_client(l: LuaState) -> i32 {
             return 1;
         }
 
-        info!("Successfully connected to MongoDB");
+        log_info!("Successfully connected to MongoDB");
 
         write_userdata(l, connection.client().clone());
         luaL_getmetatable(l, cstr!("MongoDBClient"));
@@ -106,7 +107,7 @@ pub unsafe fn new_client_with_options(l: LuaState) -> i32 {
         return 1;
     }
 
-    info!("Successfully connected to MongoDB with custom options");
+    log_info!("Successfully connected to MongoDB with custom options");
 
     write_userdata(l, connection.client().clone());
     luaL_getmetatable(l, cstr!("MongoDBClient"));
@@ -148,8 +149,6 @@ pub unsafe fn list_databases(l: LuaState) -> i32 {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-
     #[test]
     fn test_module_exists() {
         assert!(true);

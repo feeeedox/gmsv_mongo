@@ -1,4 +1,5 @@
-use log::{error, info, warn};
+use crate::log_info;
+use log::{error, warn};
 use serde::Deserialize;
 
 #[derive(Deserialize)]
@@ -21,12 +22,12 @@ pub(crate) fn check_latest_version() -> Result<(), Box<dyn std::error::Error>> {
         if let Some(latest_tag) = tags.first() {
             let current_version = env!("CARGO_PKG_VERSION");
 
-            info!("Checking for updates...");
+            log_info!("Checking for updates...");
 
             if latest_tag.name != current_version {
                 warn!("You are using version {}, but the latest version is {}.", current_version, latest_tag.name);
             } else {
-                info!("You are using the latest version ({}).", current_version);
+                log_info!("You are using the latest version ({}).", current_version);
             }
         } else {
             error!("Failed to get the latest tag.");
