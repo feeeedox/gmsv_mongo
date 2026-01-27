@@ -1,6 +1,6 @@
 [package]
 name = "gmsv_mongo"
-version = "2.1.0"
+version = "2.1.1"
 edition = "2021"
 authors = ["feeeedox"]
 description = "MongoDB driver for Garry's Mod with advanced features"
