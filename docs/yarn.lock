@@ -1454,7 +1454,7 @@
     unctx "^2.4.1"
     untyped "^2.0.0"
 
-"@nuxt/kit@^3.13.2", "@nuxt/kit@^3.15.4", "@nuxt/kit@^3.17.5":
+"@nuxt/kit@^3.13.2", "@nuxt/kit@^3.15.4":
   version "3.20.2"
   resolved "https://registry.yarnpkg.com/@nuxt/kit/-/kit-3.20.2.tgz#6af1b227f15ee9518337b1306829872d17a6e341"
   integrity sha512-laqfmMcWWNV1FsVmm1+RQUoGY8NIJvCRl0z0K8ikqPukoEry0LXMqlQ+xaf8xJRvoH2/78OhZmsEEsUBTXipcw==
@@ -7701,12 +7701,12 @@ nuxt-component-meta@0.17.1:
     ufo "^1.6.2"
     vue-component-meta "^3.2.2"
 
-nuxt-llms@0.1.3:
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/nuxt-llms/-/nuxt-llms-0.1.3.tgz#1f42e47ae974ebcc576eda829d294114cc97d047"
-  integrity sha512-+LaySko5UnlZw37GoTbsRX6KBFccSAzh6ENAYjV+xlVwsG8lSMz+IWnE7z5rstyVxHiX3Rx62M9JVut4jotJ3w==
+nuxt-llms@0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/nuxt-llms/-/nuxt-llms-0.2.0.tgz#aa6804dd1722e3bee759963c2673d818f040da58"
+  integrity sha512-GoEW00x8zaZ1wS0R0aOYptt3b54JEaRwlyVtuAiQoH51BwYdjN5/3+00/+4wi39M5cT4j5XcnGwOxJ7v4WVb9A==
   dependencies:
-    "@nuxt/kit" "^3.17.5"
+    "@nuxt/kit" "^4.2.2"
 
 nuxt-og-image@^5.1.13:
   version "5.1.13"
