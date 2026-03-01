@@ -49,4 +49,4 @@ features = ["rustls-tls"]
 
 [dev-dependencies]
 criterion = "0.5.1"
-mockall = "0.13.1"
+mockall = "0.14.0"
