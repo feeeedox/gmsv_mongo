@@ -27,7 +27,7 @@ gridfs = []
 change-streams = []
 
 [dependencies]
-rglua = { version = "2.1.0" }
+rglua = { version = "3.0.0" }
 futures = "0.3.30"
 tokio = { version = "1.40.0", features = ["full"] }
 serde = { version = "1.0.215", features = ["derive"] }
