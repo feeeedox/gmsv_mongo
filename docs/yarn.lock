@@ -636,9 +636,9 @@
   integrity sha512-bV0Tgo9K4hfPCek+aMAn81RppFKv2ySDQeMoSZuvTASywNTnVJCArCZE2FWqpvIatKu7VMRLWlR1EazvVhDyhQ==
 
 "@iconify-json/lucide@^1.2.82":
-  version "1.2.95"
-  resolved "https://registry.yarnpkg.com/@iconify-json/lucide/-/lucide-1.2.95.tgz#bb79728e56aa6cc05d724840731fec6980f6c155"
-  integrity sha512-SxDM/NEJtcGGAiLAnaZ7rcmVxkJI8esswTZLCm5BfNcoPf/yawIImb4nNfsu4dtFzP/Cl6KRg+vZq521zOUOnQ==
+  version "1.2.96"
+  resolved "https://registry.yarnpkg.com/@iconify-json/lucide/-/lucide-1.2.96.tgz#0c42b4f452c7465c2efc4a9cbec3e574d57f5d61"
+  integrity sha512-EICTusj67lvSmEaH/Lhe68ZyzcgfcPNpY00exAOkoo+z2fnLeNy31mdE3E/4/q8WjzZrICAZDxY3d6j7LzkgNA==
   dependencies:
     "@iconify/types" "*"
 
