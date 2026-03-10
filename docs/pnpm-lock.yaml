@@ -13,7 +13,7 @@ importers:
         version: 1.2.96
       '@iconify-json/simple-icons':
         specifier: ^1.2.63
-        version: 1.2.72
+        version: 1.2.73
       '@iconify-json/vscode-icons':
         specifier: ^1.2.37
         version: 1.2.44
@@ -510,8 +510,8 @@ packages:
   '@iconify-json/lucide@1.2.96':
     resolution: {integrity: sha512-EICTusj67lvSmEaH/Lhe68ZyzcgfcPNpY00exAOkoo+z2fnLeNy31mdE3E/4/q8WjzZrICAZDxY3d6j7LzkgNA==}
 
-  '@iconify-json/simple-icons@1.2.72':
-    resolution: {integrity: sha512-wkcixntHvaCoqPqerGrNFcHQ3Yx1ux4ZkhscCDK0DEHpP62XCH+cxq1HTsRjbUiQl/M9K8bj03HF6Wgn5iE2rQ==}
+  '@iconify-json/simple-icons@1.2.73':
+    resolution: {integrity: sha512-nQZTwul4c2zBqH/aLP4zMOiElj93T6HawbrP+sFQKpxmBdS5x1duCK3cAnkj6dntHz84EYkzaQRM83V2pj4qxA==}
 
   '@iconify-json/vscode-icons@1.2.44':
     resolution: {integrity: sha512-3fLOIRRtsm6HD6UPJ3Y6/UztqxNTYgKA8VxrWeg1C+042MD3A/06CkWSsii1pz/f1zl0+YxvCHIVM3tXUlho+A==}
@@ -7031,7 +7031,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/simple-icons@1.2.72':
+  '@iconify-json/simple-icons@1.2.73':
     dependencies:
       '@iconify/types': 2.0.0
 
