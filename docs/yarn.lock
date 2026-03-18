@@ -983,7 +983,7 @@
     semver "^7.5.3"
     tar "^7.4.0"
 
-"@modelcontextprotocol/sdk@^1.26.0":
+"@modelcontextprotocol/sdk@^1.27.1":
   version "1.27.1"
   resolved "https://registry.yarnpkg.com/@modelcontextprotocol/sdk/-/sdk-1.27.1.tgz#a602cf823bf8a68e13e7112f50aeb02b09fb83b9"
   integrity sha512-sr6GbP+4edBwFndLbM60gf07z0FQ79gaExpnsjMGePXqFcSSb7t6iscpjk9DhFhwd+mTEQrzNafGP8/iGGFYaA==
@@ -1318,7 +1318,7 @@
   optionalDependencies:
     ipx "^3.1.1"
 
-"@nuxt/kit@4.4.2", "@nuxt/kit@^4.2.2", "@nuxt/kit@^4.3.1":
+"@nuxt/kit@4.4.2", "@nuxt/kit@^4.2.2", "@nuxt/kit@^4.3.1", "@nuxt/kit@^4.4.2":
   version "4.4.2"
   resolved "https://registry.yarnpkg.com/@nuxt/kit/-/kit-4.4.2.tgz#272e5a80b4879d6612ab0bee86159e4ad6171e72"
   integrity sha512-5+IPRNX2CjkBhuWUwz0hBuLqiaJPRoKzQ+SvcdrQDbAyE+VDeFt74VpSFr5/R0ujrK4b+XnSHUJWdS72w6hsog==
@@ -1580,17 +1580,17 @@
     pkg-types "^1.2.1"
     semver "^7.6.3"
 
-"@nuxtjs/mcp-toolkit@0.7.0":
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/mcp-toolkit/-/mcp-toolkit-0.7.0.tgz#120a0524c0b7318ae0b2c8e52c073938967b1043"
-  integrity sha512-aOgVFqvH9+Jzk2EAn+kGfsOAi4sxwEuxyO9CvhtcTBPPZq8fuxcIk7gBH+/UCL7/5oK13z9kUMWE9eOK5g7JnA==
+"@nuxtjs/mcp-toolkit@0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/mcp-toolkit/-/mcp-toolkit-0.8.0.tgz#f0aea522e936fa7ff5f36c95c49f74285d86b527"
+  integrity sha512-CMi5XH2GfyoJnIrD/x71R/Rr/EzishHNBeevetxSnP4pJQE651qi3Ud9AJp485KaOn2GbEbmdT+taJRkuY2SIQ==
   dependencies:
-    "@modelcontextprotocol/sdk" "^1.26.0"
-    "@nuxt/kit" "^4.3.1"
+    "@modelcontextprotocol/sdk" "^1.27.1"
+    "@nuxt/kit" "^4.4.2"
     defu "^6.1.4"
     ms "^2.1.3"
     pathe "^2.0.3"
-    satori "^0.19.2"
+    satori "^0.25.0"
     scule "^1.3.0"
     tinyglobby "^0.2.15"
 
@@ -9294,10 +9294,10 @@ satori@^0.18.3:
     postcss-value-parser "^4.2.0"
     yoga-layout "^3.2.1"
 
-satori@^0.19.2:
-  version "0.19.2"
-  resolved "https://registry.yarnpkg.com/satori/-/satori-0.19.2.tgz#47e9e3d1413a783c3d54fca6e0d35126625e8e26"
-  integrity sha512-71plFHWcq6WJBM5sf/n0eHOmTBiKLUB/G8du7SmLTTLHKEKrV3TPHGKcEVIoyjnbhnjvu9HhLyF9MATB/zzL7g==
+satori@^0.25.0:
+  version "0.25.0"
+  resolved "https://registry.yarnpkg.com/satori/-/satori-0.25.0.tgz#6d08254afbd4e010cb01a78628ec0101f1e14fa6"
+  integrity sha512-utINfLxrYrmSnLvxFT4ZwgwWa8KOjrz7ans32V5wItgHVmzESl/9i33nE38uG0miycab8hUqQtDlOpqrIpB/iw==
   dependencies:
     "@shuding/opentype.js" "1.4.0-beta.0"
     css-background-parser "^0.1.0"
