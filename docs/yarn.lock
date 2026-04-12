@@ -4088,9 +4088,9 @@ baseline-browser-mapping@^2.9.0:
   integrity sha512-1ghYO3HnxGec0TCGBXiDLVns4eCSx4zJpxnHrlqFQajmhfKMQBzUGDdkMK7fUW7PTHTeLf+j87aTuKuuwWzMGw==
 
 better-sqlite3@^12.5.0:
-  version "12.8.0"
-  resolved "https://registry.yarnpkg.com/better-sqlite3/-/better-sqlite3-12.8.0.tgz#ec9ccd4a426a35f3b9355c147af6c92a6ddd6862"
-  integrity sha512-RxD2Vd96sQDjQr20kdP+F+dK/1OUNiVOl200vKBZY8u0vTwysfolF6Hq+3ZK2+h8My9YvZhHsF+RSGZW2VYrPQ==
+  version "12.9.0"
+  resolved "https://registry.yarnpkg.com/better-sqlite3/-/better-sqlite3-12.9.0.tgz#32498c99ba3fb36f604fbb5c70667c5f68c00414"
+  integrity sha512-wqUv4Gm3toFpHDQmaKD4QhZm3g1DjUBI0yzS4UBl6lElUmXFYdTQmmEDpAFa5o8FiFiymURypEnfVHzILKaxqQ==
   dependencies:
     bindings "^1.5.0"
     prebuild-install "^7.1.1"
@@ -7864,9 +7864,9 @@ nitropack@^2.13.1:
     youch-core "^0.3.3"
 
 node-abi@^3.3.0:
-  version "3.88.0"
-  resolved "https://registry.yarnpkg.com/node-abi/-/node-abi-3.88.0.tgz#656ce29cbcf7c0bd7d0a9fdff6d6432b0744ce55"
-  integrity sha512-At6b4UqIEVudaqPsXjmUO1r/N5BUr4yhDGs5PkBE8/oG5+TfLPhFechiskFsnT6Ql0VfUXbalUUCbfXxtj7K+w==
+  version "3.89.0"
+  resolved "https://registry.yarnpkg.com/node-abi/-/node-abi-3.89.0.tgz#eea98bf89d4534743bbbf2defa9f4f9bd3bdccfd"
+  integrity sha512-6u9UwL0HlAl21+agMN3YAMXcKByMqwGx+pq+P76vii5f7hTPtKDp08/H9py6DY+cfDw7kQNTGEj/rly3IgbNQA==
   dependencies:
     semver "^7.3.5"
 
