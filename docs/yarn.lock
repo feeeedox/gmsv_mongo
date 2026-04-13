@@ -1704,10 +1704,10 @@
     pkg-types "^1.2.1"
     semver "^7.6.3"
 
-"@nuxtjs/mcp-toolkit@0.13.3":
-  version "0.13.3"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/mcp-toolkit/-/mcp-toolkit-0.13.3.tgz#ad0b373ba17684ab18cc58464b26e5413effc79d"
-  integrity sha512-qCU9T1HsTsneLLaZM9BWdEiktAdUT35+klAH+1mhUgQgzmBDmvNv+e3qwFwyanegE+vThICXwM+up12xG5zzTw==
+"@nuxtjs/mcp-toolkit@0.13.4":
+  version "0.13.4"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/mcp-toolkit/-/mcp-toolkit-0.13.4.tgz#f78a776118364430c64429fcaec89e82fbc2aaf6"
+  integrity sha512-cjV0uCEsFXK8hmqx7TSvhq3oQQ77ECwN07Prun6TSQhEB0ZbkSTvsNwPLuw4+cI13Cbm/G3k9jfKsXhmU65p3Q==
   dependencies:
     "@modelcontextprotocol/sdk" "^1.29.0"
     "@nuxt/kit" "^4.4.2"
