@@ -19,7 +19,7 @@ jobs:
       - run: npm install
       - run: npx nuxt build --preset github_pages
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v5
         with:
           path: ./docs/.output/public
   deploy:
