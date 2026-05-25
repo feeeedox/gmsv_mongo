@@ -1498,7 +1498,7 @@
   optionalDependencies:
     ipx "^3.1.1"
 
-"@nuxt/kit@4.4.6", "@nuxt/kit@^4.4.2":
+"@nuxt/kit@4.4.6", "@nuxt/kit@^4.4.2", "@nuxt/kit@^4.4.6":
   version "4.4.6"
   resolved "https://registry.yarnpkg.com/@nuxt/kit/-/kit-4.4.6.tgz#d0de0624ee6b033be5c1f657276103a64fdf404e"
   integrity sha512-AzsqBJeG7b3whIciyzkz4nBossEotM314KzKAptc8kH07ORBIR8Qh3QYKepo2YZwtxiDP2Y9aqzAztwpSEDHtw==
@@ -1784,14 +1784,16 @@
     pkg-types "^1.2.1"
     semver "^7.6.3"
 
-"@nuxtjs/mcp-toolkit@0.13.4":
-  version "0.13.4"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/mcp-toolkit/-/mcp-toolkit-0.13.4.tgz#f78a776118364430c64429fcaec89e82fbc2aaf6"
-  integrity sha512-cjV0uCEsFXK8hmqx7TSvhq3oQQ77ECwN07Prun6TSQhEB0ZbkSTvsNwPLuw4+cI13Cbm/G3k9jfKsXhmU65p3Q==
+"@nuxtjs/mcp-toolkit@0.17.2":
+  version "0.17.2"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/mcp-toolkit/-/mcp-toolkit-0.17.2.tgz#65f4be4d5f9309d54660c6b78681816b82c5f45f"
+  integrity sha512-8/4d/QTc6KfUTml8IlQ2mrznszQcBCribciz+wogbCL+YCrKjqbzSz8azaQ8MvqdSHk1h3acTL4qdkLNLurLlA==
   dependencies:
     "@modelcontextprotocol/sdk" "^1.29.0"
-    "@nuxt/kit" "^4.4.2"
-    tinyglobby "^0.2.15"
+    "@nuxt/kit" "^4.4.6"
+    "@vitejs/plugin-vue" "^6.0.7"
+    tinyglobby "^0.2.16"
+    vite-plugin-singlefile "^2.3.3"
 
 "@nuxtjs/mdc@^0.21.0":
   version "0.21.1"
@@ -10952,6 +10954,13 @@ vite-plugin-inspect@^11.3.3:
     sirv "^3.0.1"
     unplugin-utils "^0.3.0"
     vite-dev-rpc "^1.1.0"
+
+vite-plugin-singlefile@^2.3.3:
+  version "2.3.3"
+  resolved "https://registry.yarnpkg.com/vite-plugin-singlefile/-/vite-plugin-singlefile-2.3.3.tgz#e859aea4c0c4b74fcbba6baf527e88f2ad09de69"
+  integrity sha512-XVnGH0QzbOa8fxRSsHdCarVN1BSBXNi7uLMQYlrGRN5apdHkk62XQWRJhVever0lnfuyBkwn+kvVChdm/OoOUg==
+  dependencies:
+    micromatch "^4.0.8"
 
 vite-plugin-vue-tracer@^1.3.0:
   version "1.4.0"
