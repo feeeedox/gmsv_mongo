@@ -3,5 +3,10 @@
   "extends": [
     "config:recommended"
   ],
-  "rebaseWhen": "conflicted"
+  "packageRules": [
+    {
+      "matchPackageNames": ["*"],
+      "groupName": "all-deps"
+    }
+  ]
 }
