@@ -73,7 +73,7 @@ local id = players:InsertOne({
 
 -- Find players
 local results = players:Find({ level = { ["$gte"] = 5 } })
-  ```
+```
 :::
 ::
 ::u-page-section{class="dark:bg-neutral-950"}
