@@ -20,7 +20,6 @@ pub unsafe fn read_userdata<T: Clone>(l: LuaState, index: i32) -> LuaResult<T> {
     let data_ptr = ptr as *const T;
     Ok((*data_ptr).clone())
 }
-
 pub unsafe fn check_string(l: LuaState, index: i32) -> LuaResult<String> {
     let ptr = luaL_checkstring(l, index);
     if ptr.is_null() {
@@ -56,8 +55,6 @@ pub unsafe fn push_error(l: LuaState, error: impl std::fmt::Display) -> i32 {
 
 #[cfg(test)]
 mod tests {
-    use supcer::*;
-
     #[test]
     fn test_userdata_size() {
         let size = std::mem::size_of::<String>();

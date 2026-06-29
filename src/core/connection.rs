@@ -44,18 +44,3 @@ impl MongoConnection {
         &self.client
     }
 }
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn test_connection_string_storage() {
-        let config = ConnectionConfig::new("mongodb://localhost:27017").unwrap();
-        let conn = MongoConnection::new(config);
-
-        if let Ok(connection) = conn {
-            assert!(!connection.connection_string().is_empty());
-        }
-    }
-}

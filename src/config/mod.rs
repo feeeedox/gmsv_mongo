@@ -11,9 +11,9 @@ pub struct ConnectionConfig {
     pub server_selection_timeout: Duration,
     pub connect_timeout: Duration,
     pub max_idle_time: Option<Duration>,
-    pub retry_writes: bool,
-    pub retry_reads: bool,
-    pub direct_connection: bool,
+    pub retry_writes: Option<bool>,
+    pub retry_reads: Option<bool>,
+    pub direct_connection: Option<bool>,
 }
 
 impl Default for ConnectionConfig {
@@ -26,9 +26,9 @@ impl Default for ConnectionConfig {
             server_selection_timeout: Duration::from_secs(30),
             connect_timeout: Duration::from_secs(10),
             max_idle_time: Some(Duration::from_secs(600)),
-            retry_writes: true,
-            retry_reads: true,
-            direct_connection: false,
+            retry_writes: Some(false),
+            retry_reads: Some(true),
+            direct_connection: Some(false),
         }
     }
 }
@@ -73,9 +73,9 @@ impl ConnectionConfig {
         options.server_selection_timeout = Some(self.server_selection_timeout);
         options.connect_timeout = Some(self.connect_timeout);
         options.max_idle_time = self.max_idle_time;
-        options.retry_writes = Some(self.retry_writes);
-        options.retry_reads = Some(self.retry_reads);
-        options.direct_connection = Some(self.direct_connection);
+        options.retry_writes = self.retry_writes;
+        options.retry_reads = self.retry_reads;
+        options.direct_connection = self.direct_connection;
 
         Ok(options)
     }
@@ -106,6 +106,6 @@ mod tests {
 
         assert_eq!(config.app_name, Some("test_app".to_string()));
         assert_eq!(config.max_pool_size, Some(50));
-        assert_eq!(config.retry_writes, false);
+        assert_eq!(config.retry_writes, Some(false));
     }
 }

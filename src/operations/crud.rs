@@ -154,7 +154,6 @@ pub fn count_documents(collection: Collection<Document>, filter: Document) -> Mo
 
 #[cfg(test)]
 mod tests {
-    use super::*;
     use mongodb::bson::doc;
 
     #[test]
