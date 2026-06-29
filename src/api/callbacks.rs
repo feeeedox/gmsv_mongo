@@ -1,6 +1,9 @@
-use crate::core::worker::{decrease_callbacks_pending, get_callbacks_pending, mark_hook_unregistered, JobResult, CALLBACK_QUEUE, LUA_REGISTRYINDEX};
+use crate::core::worker::{
+    decrease_callbacks_pending, get_callbacks_pending, mark_hook_unregistered, JobResult,
+    CALLBACK_QUEUE, LUA_REGISTRYINDEX,
+};
 use crate::types::bson_to_lua_table;
-use log::{error, info};
+use log::error;
 use rglua::lua::LuaState;
 use rglua::prelude::*;
 
@@ -41,9 +44,10 @@ pub unsafe extern "C" fn poll_callbacks(l: LuaState) -> i32 {
 
                     // Call the callback
                     if lua_pcall(l, 2, 0, 0) != 0 {
-                        error!("Error calling callback: {}",
-                            std::ffi::CStr::from_ptr(lua_tostring(l, -1))
-                                .to_string_lossy());
+                        error!(
+                            "Error calling callback: {}",
+                            std::ffi::CStr::from_ptr(lua_tostring(l, -1)).to_string_lossy()
+                        );
                         lua_pop(l, 1);
                     }
 
@@ -85,86 +89,78 @@ unsafe fn push_job_result(l: LuaState, result: JobResult) {
                 }
             }
         }
-        JobResult::InsertMany(res) => {
-            match res {
-                Ok(ids) => {
-                    lua_pushnil(l);
-                    lua_newtable(l);
-                    for (i, id) in ids.iter().enumerate() {
-                        lua_pushstring(l, std::ffi::CString::new(id.as_str()).unwrap().as_ptr());
-                        lua_rawseti(l, -2, (i + 1) as i32);
-                    }
-                }
-                Err(e) => {
-                    lua_pushstring(l, std::ffi::CString::new(e).unwrap().as_ptr());
-                    lua_pushnil(l);
+        JobResult::InsertMany(res) => match res {
+            Ok(ids) => {
+                lua_pushnil(l);
+                lua_newtable(l);
+                for (i, id) in ids.iter().enumerate() {
+                    lua_pushstring(l, std::ffi::CString::new(id.as_str()).unwrap().as_ptr());
+                    lua_rawseti(l, -2, (i + 1) as i32);
                 }
             }
-        }
-        JobResult::Find(res) => {
-            match res {
-                Ok(documents) => {
-                    lua_pushnil(l);
-                    lua_newtable(l);
-                    for (i, doc) in documents.iter().enumerate() {
-                        bson_to_lua_table(l, doc);
-                        lua_rawseti(l, -2, (i + 1) as i32);
-                    }
-                }
-                Err(e) => {
-                    lua_pushstring(l, std::ffi::CString::new(e).unwrap().as_ptr());
-                    lua_pushnil(l);
+            Err(e) => {
+                lua_pushstring(l, std::ffi::CString::new(e).unwrap().as_ptr());
+                lua_pushnil(l);
+            }
+        },
+        JobResult::Find(res) => match res {
+            Ok(documents) => {
+                lua_pushnil(l);
+                lua_newtable(l);
+                for (i, doc) in documents.iter().enumerate() {
+                    bson_to_lua_table(l, doc);
+                    lua_rawseti(l, -2, (i + 1) as i32);
                 }
             }
-        }
-        JobResult::FindOne(res) => {
-            match res {
-                Ok(Some(doc)) => {
-                    lua_pushnil(l);
-                    bson_to_lua_table(l, &doc);
-                }
-                Ok(None) => {
-                    lua_pushnil(l);
-                    lua_pushnil(l);
-                }
-                Err(e) => {
-                    lua_pushstring(l, std::ffi::CString::new(e).unwrap().as_ptr());
-                    lua_pushnil(l);
+            Err(e) => {
+                lua_pushstring(l, std::ffi::CString::new(e).unwrap().as_ptr());
+                lua_pushnil(l);
+            }
+        },
+        JobResult::FindOne(res) => match res {
+            Ok(Some(doc)) => {
+                lua_pushnil(l);
+                bson_to_lua_table(l, &doc);
+            }
+            Ok(None) => {
+                lua_pushnil(l);
+                lua_pushnil(l);
+            }
+            Err(e) => {
+                lua_pushstring(l, std::ffi::CString::new(e).unwrap().as_ptr());
+                lua_pushnil(l);
+            }
+        },
+        JobResult::UpdateOne(res)
+        | JobResult::UpdateMany(res)
+        | JobResult::DeleteOne(res)
+        | JobResult::DeleteMany(res)
+        | JobResult::CountDocuments(res) => match res {
+            Ok(count) => {
+                lua_pushnil(l);
+                lua_pushnumber(l, count as f64);
+            }
+            Err(e) => {
+                let cstr = std::ffi::CString::new(e).unwrap();
+                lua_pushstring(l, cstr.as_ptr());
+                lua_pushnil(l);
+            }
+        },
+        JobResult::Aggregate(res) => match res {
+            Ok(documents) => {
+                lua_pushnil(l);
+                lua_newtable(l);
+                for (i, doc) in documents.iter().enumerate() {
+                    bson_to_lua_table(l, doc);
+                    lua_rawseti(l, -2, (i + 1) as i32);
                 }
             }
-        }
-        JobResult::UpdateOne(res) | JobResult::UpdateMany(res) |
-        JobResult::DeleteOne(res) | JobResult::DeleteMany(res) |
-        JobResult::CountDocuments(res) => {
-            match res {
-                Ok(count) => {
-                    lua_pushnil(l);
-                    lua_pushnumber(l, count as f64);
-                }
-                Err(e) => {
-                    let cstr = std::ffi::CString::new(e).unwrap();
-                    lua_pushstring(l, cstr.as_ptr());
-                    lua_pushnil(l);
-                }
+            Err(e) => {
+                let cstr = std::ffi::CString::new(e).unwrap();
+                lua_pushstring(l, cstr.as_ptr());
+                lua_pushnil(l);
             }
-        }
-        JobResult::Aggregate(res) => {
-            match res {
-                Ok(documents) => {
-                    lua_pushnil(l);
-                    lua_newtable(l);
-                    for (i, doc) in documents.iter().enumerate() {
-                        bson_to_lua_table(l, doc);
-                        lua_rawseti(l, -2, (i + 1) as i32);
-                    }
-                }
-                Err(e) => {
-                    let cstr = std::ffi::CString::new(e).unwrap();
-                    lua_pushstring(l, cstr.as_ptr());
-                    lua_pushnil(l);
-                }
-            }
-        }
+        },
     }
 }
 
@@ -173,21 +169,20 @@ pub unsafe fn listen(l: LuaState) {
     lua_getfield(l, -1, cstr!("Add"));
     lua_pushstring(l, cstr!("Think"));
     lua_pushstring(l, cstr!("gmsv_mongo_async"));
-    lua_pushcfunction(l, std::mem::transmute::<unsafe extern "C" fn(LuaState) -> i32, LuaCFunction>(poll_callbacks));
+    lua_pushcfunction(
+        l,
+        std::mem::transmute::<unsafe extern "C" fn(LuaState) -> i32, LuaCFunction>(poll_callbacks),
+    );
     lua_call(l, 3, 0);
     lua_pop(l, 1);
 }
 
 fn deafen(l: LuaState) {
-    unsafe {
-        lua_getglobal(l, cstr!("hook"));
-        lua_getfield(l, -1, cstr!("Remove"));
-        lua_pushstring(l, cstr!("Think"));
-        lua_pushstring(l, cstr!("gmsv_mongo_async"));
-        lua_call(l, 2, 0);
-        lua_pop(l, 1);
-        mark_hook_unregistered();
-    }
+    lua_getglobal(l, cstr!("hook"));
+    lua_getfield(l, -1, cstr!("Remove"));
+    lua_pushstring(l, cstr!("Think"));
+    lua_pushstring(l, cstr!("gmsv_mongo_async"));
+    lua_call(l, 2, 0);
+    lua_pop(l, 1);
+    mark_hook_unregistered();
 }
-
-

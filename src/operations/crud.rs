@@ -1,6 +1,6 @@
-use mongodb::{Collection, bson::Document};
 use crate::core::runtime::block_on;
 use crate::error::{MongoError, MongoResult};
+use mongodb::{bson::Document, Collection};
 
 pub fn insert_one(collection: Collection<Document>, document: Document) -> MongoResult<String> {
     block_on(async move {
@@ -13,21 +13,29 @@ pub fn insert_one(collection: Collection<Document>, document: Document) -> Mongo
     })
 }
 
-pub fn insert_many(collection: Collection<Document>, documents: Vec<Document>) -> MongoResult<Vec<String>> {
+pub fn insert_many(
+    collection: Collection<Document>,
+    documents: Vec<Document>,
+) -> MongoResult<Vec<String>> {
     block_on(async move {
         let result = collection
             .insert_many(documents)
             .await
             .map_err(|e| MongoError::Operation(format!("Insert many failed: {}", e)))?;
 
-        Ok(result.inserted_ids
+        Ok(result
+            .inserted_ids
             .values()
             .map(|id| id.to_string())
             .collect())
     })
 }
 
-pub fn find(collection: Collection<Document>, filter: Document, limit: Option<i64>) -> MongoResult<Vec<Document>> {
+pub fn find(
+    collection: Collection<Document>,
+    filter: Document,
+    limit: Option<i64>,
+) -> MongoResult<Vec<Document>> {
     block_on(async move {
         let mut cursor = collection
             .find(filter)
@@ -38,8 +46,11 @@ pub fn find(collection: Collection<Document>, filter: Document, limit: Option<i6
         let mut count = 0i64;
 
         use futures::TryStreamExt;
-        while let Some(doc) = cursor.try_next().await
-            .map_err(|e| MongoError::Operation(format!("Cursor error: {}", e)))? {
+        while let Some(doc) = cursor
+            .try_next()
+            .await
+            .map_err(|e| MongoError::Operation(format!("Cursor error: {}", e)))?
+        {
             documents.push(doc);
             count += 1;
 
@@ -54,7 +65,10 @@ pub fn find(collection: Collection<Document>, filter: Document, limit: Option<i6
     })
 }
 
-pub fn find_one(collection: Collection<Document>, filter: Document) -> MongoResult<Option<Document>> {
+pub fn find_one(
+    collection: Collection<Document>,
+    filter: Document,
+) -> MongoResult<Option<Document>> {
     block_on(async move {
         collection
             .find_one(filter)
@@ -63,7 +77,12 @@ pub fn find_one(collection: Collection<Document>, filter: Document) -> MongoResu
     })
 }
 
-pub fn update_one(collection: Collection<Document>, filter: Document, update: Document, upsert: bool) -> MongoResult<i64> {
+pub fn update_one(
+    collection: Collection<Document>,
+    filter: Document,
+    update: Document,
+    upsert: bool,
+) -> MongoResult<i64> {
     block_on(async move {
         let options = mongodb::options::UpdateOptions::builder()
             .upsert(upsert)
@@ -79,7 +98,12 @@ pub fn update_one(collection: Collection<Document>, filter: Document, update: Do
     })
 }
 
-pub fn update_many(collection: Collection<Document>, filter: Document, update: Document, upsert: bool) -> MongoResult<i64> {
+pub fn update_many(
+    collection: Collection<Document>,
+    filter: Document,
+    update: Document,
+    upsert: bool,
+) -> MongoResult<i64> {
     block_on(async move {
         let options = mongodb::options::UpdateOptions::builder()
             .upsert(upsert)
@@ -90,22 +114,6 @@ pub fn update_many(collection: Collection<Document>, filter: Document, update: D
             .with_options(options)
             .await
             .map_err(|e| MongoError::Operation(format!("Update many failed: {}", e)))?;
-
-        Ok(result.modified_count as i64)
-    })
-}
-
-pub fn replace_one(collection: Collection<Document>, filter: Document, replacement: Document, upsert: bool) -> MongoResult<i64> {
-    block_on(async move {
-        let options = mongodb::options::ReplaceOptions::builder()
-            .upsert(upsert)
-            .build();
-
-        let result = collection
-            .replace_one(filter, replacement)
-            .with_options(options)
-            .await
-            .map_err(|e| MongoError::Operation(format!("Replace failed: {}", e)))?;
 
         Ok(result.modified_count as i64)
     })

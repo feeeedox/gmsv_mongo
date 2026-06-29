@@ -85,10 +85,6 @@ pub unsafe fn new_client_with_options(l: LuaState) -> i32 {
 
         lua_pushstring(l, cstr!("retry_writes"));
         lua_gettable(l, 2);
-        if lua_isboolean(l, -1) != false {
-            let enabled = lua_toboolean(l, -1) != 0;
-            config = config.with_retry_writes(enabled);
-        }
         lua_pop(l, 1);
     }
 
@@ -125,16 +121,15 @@ pub unsafe fn list_databases(l: LuaState) -> i32 {
         Err(e) => return push_error(l, e),
     };
 
-    let databases = match crate::core::runtime::block_on(async move {
-        client.list_database_names().await
-    }) {
-        Ok(dbs) => dbs,
-        Err(e) => {
-            error!("Failed to list databases: {}", e);
-            lua_pushnil(l);
-            return 1;
-        }
-    };
+    let databases =
+        match crate::core::runtime::block_on(async move { client.list_database_names().await }) {
+            Ok(dbs) => dbs,
+            Err(e) => {
+                error!("Failed to list databases: {}", e);
+                lua_pushnil(l);
+                return 1;
+            }
+        };
 
     lua_newtable(l);
     for (i, db_name) in databases.iter().enumerate() {

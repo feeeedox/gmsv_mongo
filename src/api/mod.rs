@@ -1,10 +1,9 @@
+pub mod callbacks;
 pub mod client;
-pub mod database;
 pub mod collection;
 pub mod collection_async;
-pub mod callbacks;
+pub mod database;
 
-pub use callbacks::*;
 pub use client::*;
 pub use collection::*;
 pub use collection_async::*;

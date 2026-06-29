@@ -1,18 +1,17 @@
-#[macro_use]
 extern crate rglua;
 
 use log::{info, LevelFilter};
 use rglua::lua::LuaState;
 use rglua::prelude::*;
 
-mod core;
-mod config;
-mod error;
-mod types;
-mod operations;
 mod api;
-mod utils;
+mod config;
+mod core;
+mod error;
+mod operations;
+mod types;
 mod updatecheck;
+mod utils;
 
 use std::sync::atomic::{AtomicBool, Ordering};
 
@@ -64,7 +63,11 @@ unsafe fn open(l: LuaState) -> i32 {
     lua_setfield(l, -2, cstr!("__index"));
     lua_pushcfunction(l, api::get_database as LuaCFunction);
     lua_setfield(l, -2, cstr!("Database"));
-    lua_pushcfunction(l, unsafe { std::mem::transmute::<unsafe extern "C" fn(LuaState) -> i32, LuaCFunction>(api::list_databases) });
+    lua_pushcfunction(l, unsafe {
+        std::mem::transmute::<unsafe extern "C" fn(LuaState) -> i32, LuaCFunction>(
+            api::list_databases,
+        )
+    });
     lua_setfield(l, -2, cstr!("ListDatabases"));
     lua_pop(l, 1);
 
@@ -98,17 +101,31 @@ unsafe fn open(l: LuaState) -> i32 {
     lua_setfield(l, -2, cstr!("InsertMany"));
     lua_pushcfunction(l, api::find as LuaCFunction);
     lua_setfield(l, -2, cstr!("Find"));
-    lua_pushcfunction(l, unsafe { std::mem::transmute::<unsafe extern "C" fn(LuaState) -> i32, LuaCFunction>(api::find_one) });
+    lua_pushcfunction(l, unsafe {
+        std::mem::transmute::<unsafe extern "C" fn(LuaState) -> i32, LuaCFunction>(api::find_one)
+    });
     lua_setfield(l, -2, cstr!("FindOne"));
-    lua_pushcfunction(l, unsafe { std::mem::transmute::<unsafe extern "C" fn(LuaState) -> i32, LuaCFunction>(api::update_one) });
+    lua_pushcfunction(l, unsafe {
+        std::mem::transmute::<unsafe extern "C" fn(LuaState) -> i32, LuaCFunction>(api::update_one)
+    });
     lua_setfield(l, -2, cstr!("UpdateOne"));
-    lua_pushcfunction(l, unsafe { std::mem::transmute::<unsafe extern "C" fn(LuaState) -> i32, LuaCFunction>(api::update_many) });
+    lua_pushcfunction(l, unsafe {
+        std::mem::transmute::<unsafe extern "C" fn(LuaState) -> i32, LuaCFunction>(api::update_many)
+    });
     lua_setfield(l, -2, cstr!("UpdateMany"));
-    lua_pushcfunction(l, unsafe { std::mem::transmute::<unsafe extern "C" fn(LuaState) -> i32, LuaCFunction>(api::delete_one) });
+    lua_pushcfunction(l, unsafe {
+        std::mem::transmute::<unsafe extern "C" fn(LuaState) -> i32, LuaCFunction>(api::delete_one)
+    });
     lua_setfield(l, -2, cstr!("DeleteOne"));
-    lua_pushcfunction(l, unsafe { std::mem::transmute::<unsafe extern "C" fn(LuaState) -> i32, LuaCFunction>(api::delete_many) });
+    lua_pushcfunction(l, unsafe {
+        std::mem::transmute::<unsafe extern "C" fn(LuaState) -> i32, LuaCFunction>(api::delete_many)
+    });
     lua_setfield(l, -2, cstr!("DeleteMany"));
-    lua_pushcfunction(l, unsafe { std::mem::transmute::<unsafe extern "C" fn(LuaState) -> i32, LuaCFunction>(api::count_documents) });
+    lua_pushcfunction(l, unsafe {
+        std::mem::transmute::<unsafe extern "C" fn(LuaState) -> i32, LuaCFunction>(
+            api::count_documents,
+        )
+    });
     lua_setfield(l, -2, cstr!("Count"));
 
     lua_pushcfunction(l, api::insert_one_async as LuaCFunction);
@@ -117,31 +134,71 @@ unsafe fn open(l: LuaState) -> i32 {
     lua_setfield(l, -2, cstr!("InsertManyAsync"));
     lua_pushcfunction(l, api::find_async as LuaCFunction);
     lua_setfield(l, -2, cstr!("FindAsync"));
-    lua_pushcfunction(l, unsafe { std::mem::transmute::<unsafe extern "C" fn(LuaState) -> i32, LuaCFunction>(api::find_one_async) });
+    lua_pushcfunction(l, unsafe {
+        std::mem::transmute::<unsafe extern "C" fn(LuaState) -> i32, LuaCFunction>(
+            api::find_one_async,
+        )
+    });
     lua_setfield(l, -2, cstr!("FindOneAsync"));
-    lua_pushcfunction(l, unsafe { std::mem::transmute::<unsafe extern "C" fn(LuaState) -> i32, LuaCFunction>(api::update_one_async) });
+    lua_pushcfunction(l, unsafe {
+        std::mem::transmute::<unsafe extern "C" fn(LuaState) -> i32, LuaCFunction>(
+            api::update_one_async,
+        )
+    });
     lua_setfield(l, -2, cstr!("UpdateOneAsync"));
-    lua_pushcfunction(l, unsafe { std::mem::transmute::<unsafe extern "C" fn(LuaState) -> i32, LuaCFunction>(api::update_many_async) });
+    lua_pushcfunction(l, unsafe {
+        std::mem::transmute::<unsafe extern "C" fn(LuaState) -> i32, LuaCFunction>(
+            api::update_many_async,
+        )
+    });
     lua_setfield(l, -2, cstr!("UpdateManyAsync"));
-    lua_pushcfunction(l, unsafe { std::mem::transmute::<unsafe extern "C" fn(LuaState) -> i32, LuaCFunction>(api::delete_one_async) });
+    lua_pushcfunction(l, unsafe {
+        std::mem::transmute::<unsafe extern "C" fn(LuaState) -> i32, LuaCFunction>(
+            api::delete_one_async,
+        )
+    });
     lua_setfield(l, -2, cstr!("DeleteOneAsync"));
-    lua_pushcfunction(l, unsafe { std::mem::transmute::<unsafe extern "C" fn(LuaState) -> i32, LuaCFunction>(api::delete_many_async) });
+    lua_pushcfunction(l, unsafe {
+        std::mem::transmute::<unsafe extern "C" fn(LuaState) -> i32, LuaCFunction>(
+            api::delete_many_async,
+        )
+    });
     lua_setfield(l, -2, cstr!("DeleteManyAsync"));
-    lua_pushcfunction(l, unsafe { std::mem::transmute::<unsafe extern "C" fn(LuaState) -> i32, LuaCFunction>(api::count_documents_async) });
+    lua_pushcfunction(l, unsafe {
+        std::mem::transmute::<unsafe extern "C" fn(LuaState) -> i32, LuaCFunction>(
+            api::count_documents_async,
+        )
+    });
     lua_setfield(l, -2, cstr!("CountAsync"));
 
     // Aggregation
-    lua_pushcfunction(l, unsafe { std::mem::transmute::<unsafe extern "C" fn(LuaState) -> i32, LuaCFunction>(api::aggregate) });
+    lua_pushcfunction(l, unsafe {
+        std::mem::transmute::<unsafe extern "C" fn(LuaState) -> i32, LuaCFunction>(api::aggregate)
+    });
     lua_setfield(l, -2, cstr!("Aggregate"));
-    lua_pushcfunction(l, unsafe { std::mem::transmute::<unsafe extern "C" fn(LuaState) -> i32, LuaCFunction>(api::aggregate_async) });
+    lua_pushcfunction(l, unsafe {
+        std::mem::transmute::<unsafe extern "C" fn(LuaState) -> i32, LuaCFunction>(
+            api::aggregate_async,
+        )
+    });
     lua_setfield(l, -2, cstr!("AggregateAsync"));
 
     // Index management
-    lua_pushcfunction(l, unsafe { std::mem::transmute::<unsafe extern "C" fn(LuaState) -> i32, LuaCFunction>(api::create_index) });
+    lua_pushcfunction(l, unsafe {
+        std::mem::transmute::<unsafe extern "C" fn(LuaState) -> i32, LuaCFunction>(
+            api::create_index,
+        )
+    });
     lua_setfield(l, -2, cstr!("CreateIndex"));
-    lua_pushcfunction(l, unsafe { std::mem::transmute::<unsafe extern "C" fn(LuaState) -> i32, LuaCFunction>(api::list_indexes) });
+    lua_pushcfunction(l, unsafe {
+        std::mem::transmute::<unsafe extern "C" fn(LuaState) -> i32, LuaCFunction>(
+            api::list_indexes,
+        )
+    });
     lua_setfield(l, -2, cstr!("ListIndexes"));
-    lua_pushcfunction(l, unsafe { std::mem::transmute::<unsafe extern "C" fn(LuaState) -> i32, LuaCFunction>(api::drop_index) });
+    lua_pushcfunction(l, unsafe {
+        std::mem::transmute::<unsafe extern "C" fn(LuaState) -> i32, LuaCFunction>(api::drop_index)
+    });
     lua_setfield(l, -2, cstr!("DropIndex"));
 
     lua_pop(l, 1);
@@ -152,7 +209,11 @@ unsafe fn open(l: LuaState) -> i32 {
     // Client creation
     lua_pushcfunction(l, api::new_client as LuaCFunction);
     lua_setfield(l, -2, cstr!("Client"));
-    lua_pushcfunction(l, unsafe { std::mem::transmute::<unsafe extern "C" fn(LuaState) -> i32, LuaCFunction>(api::new_client_with_options) });
+    lua_pushcfunction(l, unsafe {
+        std::mem::transmute::<unsafe extern "C" fn(LuaState) -> i32, LuaCFunction>(
+            api::new_client_with_options,
+        )
+    });
     lua_setfield(l, -2, cstr!("ClientWithOptions"));
 
     // Utility functions
@@ -162,23 +223,24 @@ unsafe fn open(l: LuaState) -> i32 {
     lua_setfield(l, -2, cstr!("Version"));
 
     lua_setglobal(l, cstr!("MongoDB"));
-    
+
     0
 }
 
 extern "C" fn suppress_messages(l: LuaState) -> i32 {
     let suppress = lua_toboolean(l, 1) != 0;
     SUPPRESS_MESSAGES.store(suppress, Ordering::Relaxed);
-    info!("Message suppression: {}", if suppress { "enabled" } else { "disabled" });
+    info!(
+        "Message suppression: {}",
+        if suppress { "enabled" } else { "disabled" }
+    );
     0
 }
 
 extern "C" fn get_version(l: LuaState) -> i32 {
-    unsafe {
-        let version = env!("CARGO_PKG_VERSION");
-        let cstr = std::ffi::CString::new(version).unwrap();
-        lua_pushstring(l, cstr.as_ptr());
-    }
+    let version = env!("CARGO_PKG_VERSION");
+    let cstr = std::ffi::CString::new(version).unwrap();
+    lua_pushstring(l, cstr.as_ptr());
     1
 }
 

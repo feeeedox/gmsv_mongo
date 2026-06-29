@@ -1,6 +1,6 @@
-use std::time::Duration;
- use mongodb::options::{ClientOptions, ServerApi, ServerApiVersion};
 use crate::error::{ConfigError, ConfigResult};
+use mongodb::options::{ClientOptions, ServerApi, ServerApiVersion};
+use std::time::Duration;
 
 #[derive(Debug, Clone)]
 pub struct ConnectionConfig {
@@ -10,12 +10,10 @@ pub struct ConnectionConfig {
     pub min_pool_size: Option<u32>,
     pub server_selection_timeout: Duration,
     pub connect_timeout: Duration,
-    pub socket_timeout: Option<Duration>,
     pub max_idle_time: Option<Duration>,
     pub retry_writes: bool,
     pub retry_reads: bool,
     pub direct_connection: bool,
-    pub tls_enabled: bool,
 }
 
 impl Default for ConnectionConfig {
@@ -27,12 +25,10 @@ impl Default for ConnectionConfig {
             min_pool_size: Some(10),
             server_selection_timeout: Duration::from_secs(30),
             connect_timeout: Duration::from_secs(10),
-            socket_timeout: None,
             max_idle_time: Some(Duration::from_secs(600)),
             retry_writes: true,
             retry_reads: true,
             direct_connection: false,
-            tls_enabled: false,
         }
     }
 }
@@ -43,7 +39,7 @@ impl ConnectionConfig {
 
         if !conn_str.starts_with("mongodb://") && !conn_str.starts_with("mongodb+srv://") {
             return Err(ConfigError::InvalidConnectionString(
-                "Connection string must start with 'mongodb://' or 'mongodb+srv://'".to_string()
+                "Connection string must start with 'mongodb://' or 'mongodb+srv://'".to_string(),
             ));
         }
 
@@ -63,44 +59,12 @@ impl ConnectionConfig {
         self
     }
 
-    pub fn with_min_pool_size(mut self, size: u32) -> Self {
-        self.min_pool_size = Some(size);
-        self
-    }
-
-    pub fn with_server_selection_timeout(mut self, timeout: Duration) -> Self {
-        self.server_selection_timeout = timeout;
-        self
-    }
-
-    pub fn with_connect_timeout(mut self, timeout: Duration) -> Self {
-        self.connect_timeout = timeout;
-        self
-    }
-
-    pub fn with_tls(mut self, enabled: bool) -> Self {
-        self.tls_enabled = enabled;
-        self
-    }
-
-    pub fn with_retry_writes(mut self, enabled: bool) -> Self {
-        self.retry_writes = enabled;
-        self
-    }
-
-    pub fn with_retry_reads(mut self, enabled: bool) -> Self {
-        self.retry_reads = enabled;
-        self
-    }
-
     pub async fn to_client_options(&self) -> ConfigResult<ClientOptions> {
         let mut options = ClientOptions::parse(&self.connection_string)
             .await
             .map_err(|e| ConfigError::InvalidConnectionString(e.to_string()))?;
 
-        let server_api = ServerApi::builder()
-            .version(ServerApiVersion::V1)
-            .build();
+        let server_api = ServerApi::builder().version(ServerApiVersion::V1).build();
         options.server_api = Some(server_api);
 
         options.app_name = self.app_name.clone();
@@ -138,8 +102,7 @@ mod tests {
         let config = ConnectionConfig::new("mongodb://localhost:27017")
             .unwrap()
             .with_app_name("test_app")
-            .with_max_pool_size(50)
-            .with_retry_writes(false);
+            .with_max_pool_size(50);
 
         assert_eq!(config.app_name, Some("test_app".to_string()));
         assert_eq!(config.max_pool_size, Some(50));

@@ -4,11 +4,9 @@ use rglua::lua::LuaState;
 use rglua::prelude::*;
 use std::ffi::{CStr, CString};
 
-
 // Lua type constants
 const LUA_TNIL: i32 = 0;
 const LUA_TBOOLEAN: i32 = 1;
-const LUA_TLIGHTUSERDATA: i32 = 2;
 const LUA_TNUMBER: i32 = 3;
 const LUA_TSTRING: i32 = 4;
 const LUA_TTABLE: i32 = 5;
@@ -87,7 +85,7 @@ unsafe fn lua_value_to_bson(l: LuaState, index: i32) -> LuaResult<Bson> {
                 .to_string();
 
             if value.starts_with("ObjectId(") && value.ends_with(")") {
-                let oid_str = &value[9..value.len()-1];
+                let oid_str = &value[9..value.len() - 1];
                 if let Ok(oid) = ObjectId::parse_str(oid_str) {
                     return Ok(Bson::ObjectId(oid));
                 }
@@ -113,7 +111,7 @@ unsafe fn lua_value_to_bson(l: LuaState, index: i32) -> LuaResult<Bson> {
             }
             lua_pop(l, 1);
 
-            let abs_index = if index < 0 {
+            let _abs_index = if index < 0 {
                 lua_gettop(l) + index + 1
             } else {
                 index
@@ -212,7 +210,7 @@ unsafe fn get_table_key(l: LuaState, index: i32) -> LuaResult<String> {
         }
 
         _ => Err(LuaError::TableConversion(
-            "Table keys must be strings or numbers".to_string()
+            "Table keys must be strings or numbers".to_string(),
         )),
     }
 }
@@ -230,7 +228,9 @@ unsafe fn parse_date_table(l: LuaState, index: i32) -> LuaResult<Bson> {
     }
 
     lua_pop(l, 1);
-    Err(LuaError::TableConversion("Invalid date table format".to_string()))
+    Err(LuaError::TableConversion(
+        "Invalid date table format".to_string(),
+    ))
 }
 
 pub unsafe fn bson_to_lua_table(l: LuaState, doc: &Document) {
@@ -282,11 +282,11 @@ unsafe fn bson_value_to_lua(l: LuaState, value: &Bson) {
 
         Bson::DateTime(dt) => {
             lua_newtable(l);
-            
+
             lua_pushstring(l, cstr!("__bson_type"));
             lua_pushstring(l, cstr!("date"));
             lua_settable(l, -3);
-            
+
             lua_pushstring(l, cstr!("timestamp"));
             lua_pushnumber(l, dt.timestamp_millis() as f64);
             lua_settable(l, -3);
