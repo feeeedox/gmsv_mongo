@@ -7,7 +7,7 @@
     "@nuxt/image": "^2.0.0",
     "@nuxt/ui": "^4.3.0",
     "@nuxtjs/mcp-toolkit": "0.17.2",
-    "@takumi-rs/core": "2.0.0-rc.1",
+    "@takumi-rs/core": "2.0.0-rc.14",
     "better-sqlite3": "^12.5.0",
     "nuxt": "^4.2.2",
     "nuxt-llms": "0.2.0",
