@@ -799,18 +799,26 @@
   resolved "https://registry.yarnpkg.com/@hono/node-server/-/node-server-1.19.9.tgz#8f37119b1acf283fd3f6035f3d1356fdb97a09ac"
   integrity sha512-vHL6w3ecZsky+8P5MD+eFfaGTyCeOHUIFYMGpQGbrBTSmNNoxv0if69rEZ5giu36weC5saFuznL411gRX7bJDw==
 
-"@humanfs/core@^0.19.1":
-  version "0.19.1"
-  resolved "https://registry.yarnpkg.com/@humanfs/core/-/core-0.19.1.tgz#17c55ca7d426733fe3c561906b8173c336b40a77"
-  integrity sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==
+"@humanfs/core@^0.19.2":
+  version "0.19.2"
+  resolved "https://registry.yarnpkg.com/@humanfs/core/-/core-0.19.2.tgz#a8272ca03b2acf492670222b2320b6c421bfde60"
+  integrity sha512-UhXNm+CFMWcbChXywFwkmhqjs3PRCmcSa/hfBgLIb7oQ5HNb1wS0icWsGtSAUNgefHeI+eBrA8I1fxmbHsGdvA==
+  dependencies:
+    "@humanfs/types" "^0.15.0"
 
 "@humanfs/node@^0.16.6":
-  version "0.16.7"
-  resolved "https://registry.yarnpkg.com/@humanfs/node/-/node-0.16.7.tgz#822cb7b3a12c5a240a24f621b5a2413e27a45f26"
-  integrity sha512-/zUx+yOsIrG4Y43Eh2peDeKCxlRt/gET6aHfaKpuq267qXdYDFViVHfMaLyygZOnl0kGWxFIgsBy8QFuTLUXEQ==
+  version "0.16.8"
+  resolved "https://registry.yarnpkg.com/@humanfs/node/-/node-0.16.8.tgz#8f800cccc13f4f8cd3116e2d9c0a94939da3e3ed"
+  integrity sha512-gE1eQNZ3R++kTzFUpdGlpmy8kDZD/MLyHqDwqjkVQI0JMdI1D51sy1H958PNXYkM2rAac7e5/CnIKZrHtPh3BQ==
   dependencies:
-    "@humanfs/core" "^0.19.1"
+    "@humanfs/core" "^0.19.2"
+    "@humanfs/types" "^0.15.0"
     "@humanwhocodes/retry" "^0.4.0"
+
+"@humanfs/types@^0.15.0":
+  version "0.15.0"
+  resolved "https://registry.yarnpkg.com/@humanfs/types/-/types-0.15.0.tgz#f2a09f62012390b2bff3fc6fb248ddec8c09a090"
+  integrity sha512-ZZ1w0aoQkwuUuC7Yf+7sdeaNfqQiiLcSRbfI08oAxqLtpXQr9AIVX7Ay7HLDuiLYAaFPu8oBYNq/QIi9URHJ3Q==
 
 "@humanwhocodes/module-importer@^1.0.1":
   version "1.0.1"
@@ -837,9 +845,9 @@
     "@iconify/types" "*"
 
 "@iconify-json/vscode-icons@^1.2.37":
-  version "1.2.65"
-  resolved "https://registry.yarnpkg.com/@iconify-json/vscode-icons/-/vscode-icons-1.2.65.tgz#b8c9b170e575fceadac35bd1694f295e895dc144"
-  integrity sha512-Rbho9fVAKMbn1fkv3uVpCkbnqYq39mJj8uDuWadH/HE0kqXYvTk/X5WlAlMpYu++4MNCjZPFGte9d4HQ8mKqvA==
+  version "1.2.66"
+  resolved "https://registry.yarnpkg.com/@iconify-json/vscode-icons/-/vscode-icons-1.2.66.tgz#89df3da8ab726c318ab2fde3481d4171998bf94e"
+  integrity sha512-gjqA31r7n3MzGmrc62ldhzpMi90wUKXQoWkOoiJ+9yUTHHmt3lGP4GhDR7LXc6ARFsUcEHsRfXrmpY0TiZ5RFQ==
   dependencies:
     "@iconify/types" "*"
 
@@ -2870,66 +2878,66 @@
     "@tailwindcss/oxide" "4.3.1"
     tailwindcss "4.3.1"
 
-"@takumi-rs/core-darwin-arm64@2.0.0-rc.14":
-  version "2.0.0-rc.14"
-  resolved "https://registry.yarnpkg.com/@takumi-rs/core-darwin-arm64/-/core-darwin-arm64-2.0.0-rc.14.tgz#77a1c2386f7b2fbcfc247d232bd93ee00e9676bc"
-  integrity sha512-gc3O9J+cT6+FsdU6mMLDp6mC/8rDSZZ824ReIszfxi57ol0SaQTmBZ0pazU6WO3VsoYprVbIvrVGDLO9EfLlPA==
+"@takumi-rs/core-darwin-arm64@2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@takumi-rs/core-darwin-arm64/-/core-darwin-arm64-2.0.2.tgz#d539221b968a420ae36f377b237be88a8dc0912e"
+  integrity sha512-Xd4CWJoE/8sbc8YBUEznGLKms8UrV8PpYmZFpN5PKYq/DF6Xx2nbzoZygihSf2dJxg1WXlsDdoDbmFQ8WjEoMw==
 
-"@takumi-rs/core-darwin-x64@2.0.0-rc.14":
-  version "2.0.0-rc.14"
-  resolved "https://registry.yarnpkg.com/@takumi-rs/core-darwin-x64/-/core-darwin-x64-2.0.0-rc.14.tgz#6cda182615c80116b2eda3b560c8b41257058048"
-  integrity sha512-+UtE5g1haH2RH6RjNGx0iopRu7JxafgX54KuzRwRCUma16juB4R2WAICLJn+RLbwWsR7MDQBhxDpS7nD/a88mw==
+"@takumi-rs/core-darwin-x64@2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@takumi-rs/core-darwin-x64/-/core-darwin-x64-2.0.2.tgz#e6db616e198e5581a98373a649697b1f1bc7df8a"
+  integrity sha512-RBcazK7MAVaZlrmn5F90x5OYxo4SeRMQRQmnAXm3WAT7cqLYWkdHkHd3uHwoIO/2HXP4bQUvOWAoeWJ6ESM67g==
 
-"@takumi-rs/core-linux-arm64-gnu@2.0.0-rc.14":
-  version "2.0.0-rc.14"
-  resolved "https://registry.yarnpkg.com/@takumi-rs/core-linux-arm64-gnu/-/core-linux-arm64-gnu-2.0.0-rc.14.tgz#6e4c1570e975dfce4dfe8dc8935b2bba60bed6c9"
-  integrity sha512-SsxyflCRieXAmWmFhLGWY9T06e1lFVqhXUpCe6x1YvhUHr1cIbjZfYHrma+plsJgTHXADnvSdPlyhs5wFYwsZQ==
+"@takumi-rs/core-linux-arm64-gnu@2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@takumi-rs/core-linux-arm64-gnu/-/core-linux-arm64-gnu-2.0.2.tgz#d2825445dd4e05ad5e9a651c19fd61bcdea0771a"
+  integrity sha512-9dmFXYPC/USu5eOa9jLFwkxGEVQrkZvRJxzsJrg3dyYBkBfgd7ejHTZxJu8DdvXHPWoI+vdDulABc944EU5T+Q==
 
-"@takumi-rs/core-linux-arm64-musl@2.0.0-rc.14":
-  version "2.0.0-rc.14"
-  resolved "https://registry.yarnpkg.com/@takumi-rs/core-linux-arm64-musl/-/core-linux-arm64-musl-2.0.0-rc.14.tgz#c7fc617ff81a06844297d91a228d32532c44f663"
-  integrity sha512-SUyRMuHGgfXUfigKR9K4k6/KGYaKmgUKk4suYIIwu0gODyCMhDBI4SI7l+F+blagEMx0dWZ63giu+ouNiV67pQ==
+"@takumi-rs/core-linux-arm64-musl@2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@takumi-rs/core-linux-arm64-musl/-/core-linux-arm64-musl-2.0.2.tgz#6458b82109002e28bc2458bf60bbcd2459eecd8c"
+  integrity sha512-/xH8s05ee97rTtX8Cdhj6Bc9RkKU10sbiwt7iJWueqxLy6S2Y+Z1jSo/sCipStEGrdFGxEx/hEJ1n/jYTvwBqA==
 
-"@takumi-rs/core-linux-x64-gnu@2.0.0-rc.14":
-  version "2.0.0-rc.14"
-  resolved "https://registry.yarnpkg.com/@takumi-rs/core-linux-x64-gnu/-/core-linux-x64-gnu-2.0.0-rc.14.tgz#5f821b41da33b664931fe35ea746417ba4ac73ae"
-  integrity sha512-/G7QTat6DcCPdNH9j79756EXHLb7diPWPx8lg7xzVoOFkxvOQWANJpyV6xVkjIW0p3zVxHP3PkSadl1Jk+2/WA==
+"@takumi-rs/core-linux-x64-gnu@2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@takumi-rs/core-linux-x64-gnu/-/core-linux-x64-gnu-2.0.2.tgz#d6bda154f87013d79335725b6838895f60664379"
+  integrity sha512-4wdbiFrtD7+O43EuyvWngQimB2Cp/Egebtgc9eoBSNpZOYS+pTxTlXoB2+ldbQenW+2VW41oxpXml7nE9Xn7Fg==
 
-"@takumi-rs/core-linux-x64-musl@2.0.0-rc.14":
-  version "2.0.0-rc.14"
-  resolved "https://registry.yarnpkg.com/@takumi-rs/core-linux-x64-musl/-/core-linux-x64-musl-2.0.0-rc.14.tgz#95b33e9af23b7651566777eaa31522cfe7575fdb"
-  integrity sha512-UcwqY+VFqpYdDN+4/6zxTbV/TVTH03Tk/6Jx4jBReZOMUaN1Al9ZZZdKt9VgRgKtnIo2QlHUNMk5T/jQHLi4fQ==
+"@takumi-rs/core-linux-x64-musl@2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@takumi-rs/core-linux-x64-musl/-/core-linux-x64-musl-2.0.2.tgz#9d46b4dff7713a5900858f86ac2e2d115225fe4f"
+  integrity sha512-itHuOGs1FHAbGZWJEwA9oOvPE9fCd/67sw7aLFcROm0ZSu0I6gh8iIZ+OeaRpI4wq7xTEVqM0QTDUkO2YzDTmg==
 
-"@takumi-rs/core-win32-arm64-msvc@2.0.0-rc.14":
-  version "2.0.0-rc.14"
-  resolved "https://registry.yarnpkg.com/@takumi-rs/core-win32-arm64-msvc/-/core-win32-arm64-msvc-2.0.0-rc.14.tgz#bc42f60db1bff81195ec79ec05a76c6fa71f544b"
-  integrity sha512-7tv8tTSdgs6zMCwe28YfOFgBfyYTsV3C2+4tNNyYTi4p8xjlMFzhMZgeRTLNTdnGcOGV7miTo5ir8lNP+4wBKA==
+"@takumi-rs/core-win32-arm64-msvc@2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@takumi-rs/core-win32-arm64-msvc/-/core-win32-arm64-msvc-2.0.2.tgz#82b8ae73c361a0e7850c1219ff4125df39aaccad"
+  integrity sha512-BByPhDUbwcvJT9KymuhmwgQivbw0mC7r04SnoSltDj9BqvVP9yl++fB0rOzkW7bZX7WGncXnemSrp+bRaYXp3g==
 
-"@takumi-rs/core-win32-x64-msvc@2.0.0-rc.14":
-  version "2.0.0-rc.14"
-  resolved "https://registry.yarnpkg.com/@takumi-rs/core-win32-x64-msvc/-/core-win32-x64-msvc-2.0.0-rc.14.tgz#d62999e12cbbd27abae49e32e8a54073e84967aa"
-  integrity sha512-0Ab/pbQyLgk7fiHRAIFXMXZGQMvIsAPP2G6/ms5TnvEku+XbsB6oCwl/JtP2oFFGrWY0RDEnP4PshzxyCU7dKw==
+"@takumi-rs/core-win32-x64-msvc@2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@takumi-rs/core-win32-x64-msvc/-/core-win32-x64-msvc-2.0.2.tgz#c6818007003465b7adfdeb095a366407ad1ec45b"
+  integrity sha512-pEcwQPMyKn1s/DwQhneL6NQbVqmVjyyrOqSEio0lk6xgHsjMlMdefmEeLs2C6ZZHWktPfQyn7ctklZ4VJO2E0Q==
 
-"@takumi-rs/core@2.0.0-rc.14":
-  version "2.0.0-rc.14"
-  resolved "https://registry.yarnpkg.com/@takumi-rs/core/-/core-2.0.0-rc.14.tgz#c91630a94cc31661ca9e83e6351af5fe8d306a17"
-  integrity sha512-WfvCU5or4WDiTIxgeoJHA3q5Z4663HR5vuu+lFYHonW+DC01v2gotwVoTyMHPj99ocGr+X8tVT6GuCzFCBP3yA==
+"@takumi-rs/core@2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@takumi-rs/core/-/core-2.0.2.tgz#34959e0223e1efefa35b928773719113f5acfe64"
+  integrity sha512-AjH3yYYqzOPP3UiOuzqwgNpBmUlRG3KQWOTLPd6dPtn84/wFvGz2IUQKyvbeVDDFBI4jH57C1I4d/4hA/D70JQ==
   dependencies:
-    "@takumi-rs/helpers" "2.0.0-rc.14"
+    "@takumi-rs/helpers" "2.0.2"
   optionalDependencies:
-    "@takumi-rs/core-darwin-arm64" "2.0.0-rc.14"
-    "@takumi-rs/core-darwin-x64" "2.0.0-rc.14"
-    "@takumi-rs/core-linux-arm64-gnu" "2.0.0-rc.14"
-    "@takumi-rs/core-linux-arm64-musl" "2.0.0-rc.14"
-    "@takumi-rs/core-linux-x64-gnu" "2.0.0-rc.14"
-    "@takumi-rs/core-linux-x64-musl" "2.0.0-rc.14"
-    "@takumi-rs/core-win32-arm64-msvc" "2.0.0-rc.14"
-    "@takumi-rs/core-win32-x64-msvc" "2.0.0-rc.14"
+    "@takumi-rs/core-darwin-arm64" "2.0.2"
+    "@takumi-rs/core-darwin-x64" "2.0.2"
+    "@takumi-rs/core-linux-arm64-gnu" "2.0.2"
+    "@takumi-rs/core-linux-arm64-musl" "2.0.2"
+    "@takumi-rs/core-linux-x64-gnu" "2.0.2"
+    "@takumi-rs/core-linux-x64-musl" "2.0.2"
+    "@takumi-rs/core-win32-arm64-msvc" "2.0.2"
+    "@takumi-rs/core-win32-x64-msvc" "2.0.2"
 
-"@takumi-rs/helpers@2.0.0-rc.14":
-  version "2.0.0-rc.14"
-  resolved "https://registry.yarnpkg.com/@takumi-rs/helpers/-/helpers-2.0.0-rc.14.tgz#babfa501ff47ef1f31758faf1465ac11f4e9f3e0"
-  integrity sha512-h4qp59DRu3uJ0pqfXtMSvjT/bIQl58L+7/EGkXiE+Dke+Ym65VhxsVlBTuiih4QvIuIemAf7C6y7Ax1IBBu4CQ==
+"@takumi-rs/helpers@2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@takumi-rs/helpers/-/helpers-2.0.2.tgz#a93bb443f52b6f88ea8edba7fb03d6d7f7f57884"
+  integrity sha512-449j/koF+qamizJC8v/L5RVQ0oVufPzZ4h07bJZ93RWJq+ZxdlGCLLAXV3sOUGTcf9FPUk3l4kDsG5fUMq4Z8g==
 
 "@tanstack/table-core@8.21.3":
   version "8.21.3"
@@ -3209,15 +3217,10 @@
   resolved "https://registry.yarnpkg.com/@types/esrecurse/-/esrecurse-4.3.1.tgz#6f636af962fbe6191b830bd676ba5986926bccec"
   integrity sha512-xJBAbDifo5hpffDBuHl0Y8ywswbiAp/Wi7Y/GtAgSlZyIABppyurxVueOPE8LUQOxdlgi6Zqce7uoEpqNTeiUw==
 
-"@types/estree@*", "@types/estree@1.0.9", "@types/estree@^1.0.0", "@types/estree@^1.0.8", "@types/estree@^1.0.9":
+"@types/estree@*", "@types/estree@1.0.9", "@types/estree@^1.0.0", "@types/estree@^1.0.6", "@types/estree@^1.0.8", "@types/estree@^1.0.9":
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-1.0.9.tgz#cf3f0e876d7bee15a93ab925b82bf570a3904a24"
   integrity sha512-GhdPgy1el4/ImP05X05Uw4cw2/M93BCUmnEvWZNStlCzEKME4Fkk+YpoA5OiHNQmoS7Cafb8Xa3Pya8m1Qrzeg==
-
-"@types/estree@^1.0.6":
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/@types/estree/-/estree-1.0.8.tgz#958b91c991b1867ced318bedea0e215ee050726e"
-  integrity sha512-dWHzHa2WqEXI/O1E9OjrocMTKJl2mSrEolh1Iomrv6U+JuNwaHXsXx9bLu5gG7BUWFIN0skIQJQ/L1rIex4X6w==
 
 "@types/hast@^3.0.0", "@types/hast@^3.0.4":
   version "3.0.4"
@@ -3756,6 +3759,19 @@
     path-browserify "^1.0.1"
     picomatch "^4.0.4"
 
+"@vue/language-core@3.3.7":
+  version "3.3.7"
+  resolved "https://registry.yarnpkg.com/@vue/language-core/-/language-core-3.3.7.tgz#91fc7ad31f7722367dbc4d1c3c556d50dd1de2d8"
+  integrity sha512-LzmkKinXAMMoh8Jfi/jMUSDUjuPdv8mynH5WJGKfXyZtDw3hQ6GBaoI6Bcnl/Xqlu32q/0Z6i/trp4VXykzyLw==
+  dependencies:
+    "@volar/language-core" "2.4.28"
+    "@vue/compiler-dom" "^3.5.0"
+    "@vue/shared" "^3.5.0"
+    alien-signals "^3.2.1"
+    muggle-string "^0.4.1"
+    path-browserify "^1.0.1"
+    picomatch "^4.0.4"
+
 "@vue/reactivity@3.5.38":
   version "3.5.38"
   resolved "https://registry.yarnpkg.com/@vue/reactivity/-/reactivity-3.5.38.tgz#71cf88b764a6d5334dd27d5ac9f029c81cd4fc34"
@@ -3939,9 +3955,9 @@ ajv-formats@^3.0.1:
     ajv "^8.0.0"
 
 ajv@^6.14.0:
-  version "6.14.0"
-  resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.14.0.tgz#fd067713e228210636ebb08c60bd3765d6dbe73a"
-  integrity sha512-IWrosm/yrn43eiKqkfkHis7QioDleaXQHdDVPKg0FSwwd/DuvyX79TZnFOnYpB7dcsFAMmtFztZuXPDvSePkFw==
+  version "6.15.0"
+  resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.15.0.tgz#07e982c74626167aa7a2495c53817892d7139492"
+  integrity sha512-fgFx7Hfoq60ytK2c7DhnF8jIvzYgOMxfugjLOSMHjLIPgenqa7S7oaagATUq99mV6IYvN2tRmC0wnTYX6iPbMw==
   dependencies:
     fast-deep-equal "^3.1.1"
     fast-json-stable-stringify "^2.0.0"
@@ -3958,7 +3974,7 @@ ajv@^8.0.0, ajv@^8.17.1:
     json-schema-traverse "^1.0.0"
     require-from-string "^2.0.2"
 
-alien-signals@^3.2.0:
+alien-signals@^3.2.0, alien-signals@^3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/alien-signals/-/alien-signals-3.2.1.tgz#eb66256949bce90b7d30d055e2752e62d6930c7c"
   integrity sha512-I8FjmltrfnDFoZedi5CG8DghVYNhzb/Ijluz7tCSJH0xpd0484Kowhbb1XDYOxfJpU1p5wnM2X54dA+IfGyD1g==
@@ -5391,9 +5407,9 @@ eslint-visitor-keys@^4.2.1:
   integrity sha512-Uhdk5sfqcee/9H/rCOJikYz67o0a2Tw2hGRPOG2Y1R2dg7brRe1uG0yaNQDHu+TO/uQPF/5eCapvYSmHUjt7JQ==
 
 eslint@^10.0.0:
-  version "10.6.0"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-10.6.0.tgz#e1b4059c582be950c7088c9b55f984738b243c27"
-  integrity sha512-6lVbcqSodALYo+4ELD0heG6lFiFxnLMuLkiMi2qV8LMp54N8tE8FT1GMH+ev4Ti00nFjNze2+Su6DsV5OQW3Dg==
+  version "10.7.0"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-10.7.0.tgz#cd3b8022f3b1e3b183760d90dfc58e9d3644106b"
+  integrity sha512-GVTD7s1vdIl6UYvAfriOPeY1Df8LIZjfofLvHwde+erDHGGuHyuM6xoxRxmHiebhYuD2p1vN4wWh0XzPARSGDQ==
   dependencies:
     "@eslint-community/eslint-utils" "^4.8.0"
     "@eslint-community/regexpp" "^4.12.2"
@@ -5723,9 +5739,9 @@ flat@^6.0.1:
   integrity sha512-/3FfIa8mbrg3xE7+wAhWeV+bd7L2Mof+xtZb5dRDKZ+wDvYJK4WDYeIOuOhre5Yv5aQObZrlbRmk3RTSiuQBtw==
 
 flatted@^3.2.9:
-  version "3.3.4"
-  resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.3.4.tgz#0986e681008f0f13f58e18656c47967682db5ff6"
-  integrity sha512-3+mMldrTAPdta5kjX2G2J7iX4zxtnwpdA8Tr2ZSjkyPSanvbZAcy6flmtnXbEybHrDcU9641lxrMfFuUxVz9vA==
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.4.2.tgz#f5c23c107f0f37de8dbdf24f13722b3b98d52726"
+  integrity sha512-PjDse7RzhcPkIJwy5t7KPWQSZ9cAbzQXcafsetQoD7sOJRQlGikNbx7yZp2OotDnJyrDcbyRq3Ttb18iYOqkxA==
 
 fontaine@0.8.0:
   version "0.8.0"
@@ -10824,12 +10840,12 @@ vue-router@^5.1.0:
     yaml "^2.9.0"
 
 vue-tsc@^3.2.1:
-  version "3.3.6"
-  resolved "https://registry.yarnpkg.com/vue-tsc/-/vue-tsc-3.3.6.tgz#a0ec8c5a3ae248d720d45eb124aea2e69a0b014d"
-  integrity sha512-ERXGgbKSBGFUkavrJ1Iwj0ZVxKqB/5UOx65IXy7fPf2UsoI21n3ssQLwdvx8xyUGgJe9PvSZTM/FYzIdwUDPFA==
+  version "3.3.7"
+  resolved "https://registry.yarnpkg.com/vue-tsc/-/vue-tsc-3.3.7.tgz#bbe14cd97b3cb72618ed775253d01b76d2992014"
+  integrity sha512-+C+rgD49wAQ5bUTl2sp5a8Bzg4YoldMNXM+g7CFe604MYcQ8PrZPMQhIjJSzKXtPBCa+C5ayMipqjbA7splekQ==
   dependencies:
     "@volar/typescript" "2.4.28"
-    "@vue/language-core" "3.3.6"
+    "@vue/language-core" "3.3.7"
 
 vue@^3.4.5:
   version "3.5.39"
