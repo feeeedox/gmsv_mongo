@@ -860,9 +860,9 @@
   integrity sha512-bV0Tgo9K4hfPCek+aMAn81RppFKv2ySDQeMoSZuvTASywNTnVJCArCZE2FWqpvIatKu7VMRLWlR1EazvVhDyhQ==
 
 "@iconify-json/lucide@^1.2.82":
-  version "1.2.136"
-  resolved "https://registry.yarnpkg.com/@iconify-json/lucide/-/lucide-1.2.136.tgz#ce959870e4e11cb43db5b22b5572cc78932ff728"
-  integrity sha512-Wk+OeDVKkw+1LELZqRR3gXWIy5jNx5XjNMvVc9KoygJYmGqclv36FYqseRuJuxBIKDggdoZWNBxNRrOkiRbtwQ==
+  version "1.2.137"
+  resolved "https://registry.yarnpkg.com/@iconify-json/lucide/-/lucide-1.2.137.tgz#0c6ecb53246390559783022398a88abf202d21ee"
+  integrity sha512-uKz1+tFbv1RFX/mJQNksdnyKJijNfRGSNnxfiyKtr+dLNfA3ERph+IgpXClKGOlV/5GsZwLv2jgJXQ/bjF/JAg==
   dependencies:
     "@iconify/types" "*"
 
@@ -874,9 +874,9 @@
     "@iconify/types" "*"
 
 "@iconify-json/vscode-icons@^1.2.37":
-  version "1.2.81"
-  resolved "https://registry.yarnpkg.com/@iconify-json/vscode-icons/-/vscode-icons-1.2.81.tgz#a9074f74d2d552dd04c251f0a050e5587648f5fc"
-  integrity sha512-ES/vVycj4IVC7TK8t+9T4Gnca9p/GbuL8A2Va+xWi01HGpyRCrXdRvKAUE8VcQbTkZsfy6Fv0L6TXq9eFj5+Yw==
+  version "1.2.82"
+  resolved "https://registry.yarnpkg.com/@iconify-json/vscode-icons/-/vscode-icons-1.2.82.tgz#eb7cc23686557c783f5a4846ad5d07d445e30384"
+  integrity sha512-J4TIauES5jhw7Ij38qhH5JoE/6MciTWz2Wz6KPiVj5kgP07mI4ai9MYpl+bn991LiqC3uW6YqNrIk0jlabT3ug==
   dependencies:
     "@iconify/types" "*"
 
