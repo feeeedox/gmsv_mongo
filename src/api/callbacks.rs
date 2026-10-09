@@ -24,17 +24,14 @@ pub unsafe extern "C" fn poll_callbacks(l: LuaState) -> i32 {
                 processed += 1;
 
                 if let Some(callback_ref) = job.callback {
-                    // Get the callback function from registry
                     lua_rawgeti(l, LUA_REGISTRYINDEX, callback_ref);
 
-                    // Check if it's a function
                     if !lua_isfunction(l, -1) {
                         lua_pop(l, 1);
                         luaL_unref(l, LUA_REGISTRYINDEX, callback_ref);
                         continue;
                     }
 
-                    // Push callback arguments based on result type
                     if let Some(result) = job.result {
                         push_job_result(l, result);
                     } else {
@@ -42,7 +39,6 @@ pub unsafe extern "C" fn poll_callbacks(l: LuaState) -> i32 {
                         lua_pushstring(l, cstr!("No result"));
                     }
 
-                    // Call the callback
                     if lua_pcall(l, 2, 0, 0) != 0 {
                         error!(
                             "Error calling callback: {}",
@@ -51,7 +47,6 @@ pub unsafe extern "C" fn poll_callbacks(l: LuaState) -> i32 {
                         lua_pop(l, 1);
                     }
 
-                    // Unreference the callback
                     luaL_unref(l, LUA_REGISTRYINDEX, callback_ref);
                 }
             }

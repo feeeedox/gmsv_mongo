@@ -31,7 +31,6 @@ pub extern "C" fn get_collection(l: LuaState) -> i32 {
     }
 }
 
-/// Insert a single document
 #[lua_function]
 pub extern "C" fn insert_one(l: LuaState) -> i32 {
     unsafe {
@@ -370,7 +369,6 @@ pub unsafe fn aggregate(l: LuaState) -> i32 {
         Err(e) => return push_error(l, e),
     };
 
-    // Convert pipeline array
     if !lua_istable(l, 2) {
         error!("Expected table for pipeline");
         lua_pushnil(l);
@@ -401,7 +399,6 @@ pub unsafe fn aggregate(l: LuaState) -> i32 {
         index += 1;
     }
 
-    // automatically append an _id field with a null value so developers can use "nil" as a grouping key (basically the same like null, but nil is getting removed in Lua)
     for stage in pipeline.iter_mut() {
         if let Ok(group) = stage.get_document_mut("$group") {
             if !group.contains_key("_id") {

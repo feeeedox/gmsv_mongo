@@ -1,9 +1,6 @@
 use crate::config::ConnectionConfig;
 use crate::core::runtime::block_on;
 use crate::error::{MongoError, MongoResult};
-/// Connection pooling and management
-///
-/// Manages MongoDB client connections with proper pooling and lifecycle
 use mongodb::Client;
 use std::sync::Arc;
 

@@ -36,13 +36,10 @@ pub enum ConfigError {
     InvalidConnectionString(String),
 }
 
-/// Result type alias for MongoDB operations
 pub type MongoResult<T> = Result<T, MongoError>;
 
-/// Result type alias for Lua operations
 pub type LuaResult<T> = Result<T, LuaError>;
 
-/// Result type alias for configuration operations
 pub type ConfigResult<T> = Result<T, ConfigError>;
 
 #[cfg(test)]

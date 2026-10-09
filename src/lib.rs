@@ -17,12 +17,10 @@ use std::sync::atomic::{AtomicBool, Ordering};
 
 pub static SUPPRESS_MESSAGES: AtomicBool = AtomicBool::new(false);
 
-/// Returns whether messages should be suppressed
 pub fn is_suppressed() -> bool {
     SUPPRESS_MESSAGES.load(Ordering::Relaxed)
 }
 
-/// Macro for conditional info logging that respects SUPPRESS_MESSAGES
 #[macro_export]
 macro_rules! log_info {
     ($($arg:tt)*) => {
@@ -49,7 +47,6 @@ unsafe fn open(l: LuaState) -> i32 {
 
     info!("  Loading {} v{}...", name, version);
 
-    // Initialize async worker
     use once_cell::sync::Lazy;
     Lazy::force(&core::worker::JOB_QUEUE);
     Lazy::force(&core::worker::CALLBACK_QUEUE);
@@ -71,7 +68,6 @@ unsafe fn open(l: LuaState) -> i32 {
     lua_setfield(l, -2, cstr!("ListDatabases"));
     lua_pop(l, 1);
 
-    // Register MongoDBDatabase metatable
     luaL_newmetatable(l, cstr!("MongoDBDatabase"));
     lua_pushvalue(l, -1);
     lua_setfield(l, -2, cstr!("__index"));
@@ -89,12 +85,10 @@ unsafe fn open(l: LuaState) -> i32 {
     lua_setfield(l, -2, cstr!("Drop"));
     lua_pop(l, 1);
 
-    // Register MongoDBCollection metatable
     luaL_newmetatable(l, cstr!("MongoDBCollection"));
     lua_pushvalue(l, -1);
     lua_setfield(l, -2, cstr!("__index"));
 
-    // CRUD operations
     lua_pushcfunction(l, api::insert_one as LuaCFunction);
     lua_setfield(l, -2, cstr!("InsertOne"));
     lua_pushcfunction(l, api::insert_many as LuaCFunction);
@@ -171,7 +165,6 @@ unsafe fn open(l: LuaState) -> i32 {
     });
     lua_setfield(l, -2, cstr!("CountAsync"));
 
-    // Aggregation
     lua_pushcfunction(l, unsafe {
         std::mem::transmute::<unsafe extern "C" fn(LuaState) -> i32, LuaCFunction>(api::aggregate)
     });
@@ -183,7 +176,6 @@ unsafe fn open(l: LuaState) -> i32 {
     });
     lua_setfield(l, -2, cstr!("AggregateAsync"));
 
-    // Index management
     lua_pushcfunction(l, unsafe {
         std::mem::transmute::<unsafe extern "C" fn(LuaState) -> i32, LuaCFunction>(
             api::create_index,
@@ -203,10 +195,8 @@ unsafe fn open(l: LuaState) -> i32 {
 
     lua_pop(l, 1);
 
-    // Create global MongoDB table
     lua_newtable(l);
 
-    // Client creation
     lua_pushcfunction(l, api::new_client as LuaCFunction);
     lua_setfield(l, -2, cstr!("Client"));
     lua_pushcfunction(l, unsafe {
@@ -216,7 +206,6 @@ unsafe fn open(l: LuaState) -> i32 {
     });
     lua_setfield(l, -2, cstr!("ClientWithOptions"));
 
-    // Utility functions
     lua_pushcfunction(l, suppress_messages);
     lua_setfield(l, -2, cstr!("SuppressMessages"));
     lua_pushcfunction(l, get_version);

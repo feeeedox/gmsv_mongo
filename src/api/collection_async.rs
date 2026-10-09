@@ -13,7 +13,6 @@ fn maybe_register_hook(l: LuaState) {
     }
 }
 
-/// Async version of insert_one with callback
 #[lua_function]
 pub extern "C" fn insert_one_async(l: LuaState) -> i32 {
     unsafe {
@@ -60,7 +59,6 @@ pub extern "C" fn insert_one_async(l: LuaState) -> i32 {
     }
 }
 
-/// Async version of insert_many with callback
 #[lua_function]
 pub extern "C" fn insert_many_async(l: LuaState) -> i32 {
     unsafe {
@@ -128,7 +126,6 @@ pub extern "C" fn insert_many_async(l: LuaState) -> i32 {
     }
 }
 
-/// Async version of find with callback
 #[lua_function]
 pub extern "C" fn find_async(l: LuaState) -> i32 {
     unsafe {
@@ -152,9 +149,10 @@ pub extern "C" fn find_async(l: LuaState) -> i32 {
             None
         };
 
-        let callback = if lua_isfunction(l, 4) {
+        let callback_index = if lua_isfunction(l, 3) { 3 } else { 4 };
+        let callback = if lua_isfunction(l, callback_index) {
             maybe_register_hook(l);
-            lua_pushvalue(l, 4);
+            lua_pushvalue(l, callback_index);
             Some(luaL_ref(l, LUA_REGISTRYINDEX))
         } else {
             None
@@ -182,7 +180,6 @@ pub extern "C" fn find_async(l: LuaState) -> i32 {
     }
 }
 
-/// Async version of find_one with callback
 #[lua_function]
 pub unsafe fn find_one_async(l: LuaState) -> i32 {
     let collection: Collection<Document> = match read_userdata(l, 1) {
@@ -227,7 +224,6 @@ pub unsafe fn find_one_async(l: LuaState) -> i32 {
     1
 }
 
-/// Async version of update_one with callback
 #[lua_function]
 pub unsafe fn update_one_async(l: LuaState) -> i32 {
     let collection: Collection<Document> = match read_userdata(l, 1) {
@@ -259,9 +255,10 @@ pub unsafe fn update_one_async(l: LuaState) -> i32 {
         false
     };
 
-    let callback = if lua_isfunction(l, 5) {
+    let callback_index = if lua_isfunction(l, 4) { 4 } else { 5 };
+    let callback = if lua_isfunction(l, callback_index) {
         maybe_register_hook(l);
-        lua_pushvalue(l, 5);
+        lua_pushvalue(l, callback_index);
         Some(luaL_ref(l, LUA_REGISTRYINDEX))
     } else {
         None
@@ -289,7 +286,6 @@ pub unsafe fn update_one_async(l: LuaState) -> i32 {
     1
 }
 
-/// Async version of update_many with callback
 #[lua_function]
 pub unsafe fn update_many_async(l: LuaState) -> i32 {
     let collection: Collection<Document> = match read_userdata(l, 1) {
@@ -321,9 +317,10 @@ pub unsafe fn update_many_async(l: LuaState) -> i32 {
         false
     };
 
-    let callback = if lua_isfunction(l, 5) {
+    let callback_index = if lua_isfunction(l, 4) { 4 } else { 5 };
+    let callback = if lua_isfunction(l, callback_index) {
         maybe_register_hook(l);
-        lua_pushvalue(l, 5);
+        lua_pushvalue(l, callback_index);
         Some(luaL_ref(l, LUA_REGISTRYINDEX))
     } else {
         None
@@ -351,7 +348,6 @@ pub unsafe fn update_many_async(l: LuaState) -> i32 {
     1
 }
 
-/// Async version of delete_one with callback
 #[lua_function]
 pub unsafe fn delete_one_async(l: LuaState) -> i32 {
     let collection: Collection<Document> = match read_userdata(l, 1) {
@@ -396,7 +392,6 @@ pub unsafe fn delete_one_async(l: LuaState) -> i32 {
     1
 }
 
-/// Async version of delete_many with callback
 #[lua_function]
 pub unsafe fn delete_many_async(l: LuaState) -> i32 {
     let collection: Collection<Document> = match read_userdata(l, 1) {
@@ -441,7 +436,6 @@ pub unsafe fn delete_many_async(l: LuaState) -> i32 {
     1
 }
 
-/// Async version of count_documents with callback
 #[lua_function]
 pub unsafe fn count_documents_async(l: LuaState) -> i32 {
     let collection: Collection<Document> = match read_userdata(l, 1) {
@@ -486,7 +480,6 @@ pub unsafe fn count_documents_async(l: LuaState) -> i32 {
     1
 }
 
-/// Async version of aggregate with callback
 #[lua_function]
 pub unsafe fn aggregate_async(l: LuaState) -> i32 {
     let collection: Collection<Document> = match read_userdata(l, 1) {
@@ -494,7 +487,6 @@ pub unsafe fn aggregate_async(l: LuaState) -> i32 {
         Err(e) => return push_error(l, e),
     };
 
-    // Convert pipeline array
     if !lua_istable(l, 2) {
         error!("Expected table for pipeline");
         lua_pushboolean(l, 0);
@@ -525,7 +517,6 @@ pub unsafe fn aggregate_async(l: LuaState) -> i32 {
         index += 1;
     }
 
-    // automatically append an _id field with a null value so developers can use "nil" as a grouping key
     for stage in pipeline.iter_mut() {
         if let Ok(group) = stage.get_document_mut("$group") {
             if !group.contains_key("_id") {
