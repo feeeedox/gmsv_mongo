@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./docs
+        working-directory: ./simplewiki
     steps:
       - uses: actions/checkout@v7
       - run: corepack enable
