@@ -1,0 +1,83 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    ":semanticCommits",
+    ":dependencyDashboard",
+    "group:allNonMajor",
+    "security:minimumReleaseAgeNpm",
+    "schedule:weekly"
+  ],
+  "timezone": "Europe/Berlin",
+  "rangeStrategy": "bump",
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["before 4am on monday"]
+  },
+  "packageRules": [
+    {
+      "groupName": "Nuxt ecosystem (minor/patch)",
+      "matchPackageNames": [
+        "nuxt",
+        "@nuxt/**",
+        "vue",
+        "vue-router"
+      ],
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true
+    },
+    {
+      "groupName": "Nuxt ecosystem (major)",
+      "matchPackageNames": [
+        "nuxt",
+        "@nuxt/**",
+        "vue",
+        "vue-router"
+      ],
+      "matchUpdateTypes": ["major"],
+      "automerge": false,
+      "dependencyDashboardApproval": true
+    },
+    {
+      "groupName": "Tailwind CSS",
+      "matchPackageNames": [
+        "tailwindcss",
+        "@tailwindcss/**"
+      ],
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true
+    },
+    {
+      "groupName": "Tailwind CSS (major)",
+      "matchPackageNames": [
+        "tailwindcss",
+        "@tailwindcss/**"
+      ],
+      "matchUpdateTypes": ["major"],
+      "automerge": false
+    },
+    {
+      "matchPackageNames": ["better-sqlite3"],
+      "groupName": "better-sqlite3 (native module)",
+      "automerge": false,
+      "matchUpdateTypes": ["major", "minor"]
+    },
+    {
+      "matchDepTypes": ["devDependencies"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true,
+      "groupName": "devDependencies (non-major)"
+    },
+    {
+      "matchUpdateTypes": ["pin", "digest"],
+      "automerge": true
+    }
+  ],
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "labels": ["security"],
+    "automerge": true
+  },
+  "prConcurrentLimit": 5,
+  "prHourlyLimit": 3
+}
