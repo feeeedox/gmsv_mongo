@@ -17,8 +17,6 @@
 </h1>
 
 
-<h2>Installation & Usage</h2>
-
 For a tutorial how to setup and use the module, check out the [installation page on the wiki](https://feeeedox.github.io/gmsv_mongo/getting-started/installation)
 
 <h2>Examples</h2>
