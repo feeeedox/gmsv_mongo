@@ -1,11 +1,22 @@
-<h1 align="center" id="title">gmsv_mongo</h1>
+<h1 align="center">
+   <img src="./.github/assets/logo.png" width="100px" /> 
+   <br>
+      gmsv_mongo
+   <br>
+   <img src="./.github/assets/bar.png" width="600px" /> 
+   <br>   
+   <div align="center">
+      <p></p>
+      <div align="center">
+         <img src="https://shieldcn.dev/group/github/stars/feeeedox/gmsv_mongo+github/forks/feeeedox/gmsv_mongo+github/license/feeeedox/gmsv_mongo.svg?variant=ghost&theme=zinc">
+         <p></p>
+         <img src="https://shieldcn.dev/flag/de.svg?theme=zinc"> <img src="https://www.shieldcn.dev/github/release/feeeedox/gmsv_mongo.svg?size=sm&theme=zinc">
+      </div>
+      <br>
+   </div>
+</h1>
 
-<p align="center"><img src="https://socialify.git.ci/feeeedox/gmsv_mongo/image?font=Jost&issues=1&language=1&name=1&owner=1&pattern=Floating%20Cogs&pulls=1&stargazers=1&theme=Dark" alt="project-image"></p>
-<p id="description">The gmsv_mongo module enables the usage of MongoDB connections within Garry's Mod (GMod) via Rust. This opens up diverse possibilities for database interactions and management within GMod servers.</p>
-
-<p align="center"><img src="https://img.shields.io/badge/License-MIT-green" alt="shields">   <img src="https://img.shields.io/github/release/feeeedox/gmsv_mongo?include_prereleases=&amp;sort=semver&amp;color=green" alt="shields"></p>
-
-<h2>🛠️ Installation Steps:</h2>
+<h2>Installation Steps:</h2>
 
 <p>1. Download the correct file for your server operating system. You can execute the following console command to get the correct version.</p>
 
@@ -21,7 +32,7 @@ lua_run print(jit.os, jit.arch)
 require('mongo');
 ```
 
-<h2>💻 Built with</h2>
+<h2>Built with</h2>
 
 Technologies used in the project:
 
@@ -35,7 +46,7 @@ Technologies used in the project:
 * [termcolor](https://docs.rs/termcolor/1.4.1/termcolor/)
 * [futures](https://docs.rs/futures/0.3.30/futures/)
 
-<h2>🔨 Build project</h2>
+<h2>Build project</h2>
 
 To build the sample project in debug mode, you need to specify the target architecture for your build.
 
@@ -70,13 +81,14 @@ Finally, you can load the module from Lua with:
 require("mongo")
 ```
 
-<h2>🧑‍💻 Examples</h2>
+<h2>Examples</h2>
 
 For some examples on how to use the module, check out the [examples](https://github.com/feeeedox/gmsv_mongo/tree/master/examples) folder or the [wiki](https://feeeedox.github.io/gmsv_mongo/)
-<h2>🛡️ License:</h2>
+
+<h2>License:</h2>
 
 This project is licensed under the [MIT](LICENSE)
 
-<h2>💖Like my work?</h2>
+<h2>Like my work?</h2>
 
 Leave a ⭐ on this repository :D
