@@ -40,8 +40,3 @@ If Rust reports it cannot find the target/toolchain, you may need to install it.
 toolchain for your system, which is likely Windows 64-bit (`x86_64-pc-windows-msvc`).
 
 Cross-compiling Linux binaries on Windows is not recommended. For compiling Linux binaries on Windows, use WSL.
-
-[![feeeedox/gmsv_mongo contributors](https://shieldcn.dev/contributors/feeeedox/gmsv_mongo.svg?preset=glow&theme=zinc&bots=true&mode=dark)](https://github.com/feeeedox/gmsv_mongo/graphs/contributors)
-
-![chart](https://shieldcn.dev/chart/github/stars/feeeedox/gmsv_mongo.svg?theme=zinc&font=space-grotesk&logo=false&icon=mongodb)
-
